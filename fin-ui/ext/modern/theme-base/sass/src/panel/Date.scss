@@ -1,0 +1,47 @@
+.#{$prefix}datepanel {
+    display: inline-flex;
+    flex: 0 0 auto !important;
+
+    // Safari wants to display focus outline when a button is clicked
+    // within the floating date panel. This is technically correct because
+    // the date panel is focused at that moment but we don't want the outline
+    // to show anyway.
+    &:focus {
+        outline: none;
+    }
+
+    .#{$prefix}paneltitle {
+        .#{$prefix}body-el {
+            position: relative;
+            width: 100%;
+
+            .#{$prefix}text-el {
+                text-align: center;
+                width: 100%;
+            }
+
+            .#{$prefix}cloned {
+                position: absolute;
+                left: 0;
+                right: 0;
+                text-align: center;
+            }
+        }
+    }
+
+    .#{$prefix}panel-body-el {
+        border-width: 0 !important;
+
+        .#{$prefix}cloned {
+            position: absolute;
+        }
+    }
+
+    .#{$prefix}table {
+        border-collapse: collapse;
+    }
+
+    .#{$prefix}header .#{$prefix}cell {
+        text-overflow: clip;
+    }
+}

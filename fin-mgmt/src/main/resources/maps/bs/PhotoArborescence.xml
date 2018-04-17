@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bs.photoArborescence">
+    <!-- 添加商品树 -->
+    <insert id="insertPhotoArborescence" parameterType="com.xgt.bean.bs.PhotoBean">
+        INSERT bs_photo
+        SET
+            <if test="text!=null">`name` =#{text},</if>
+            <if test="text!=null">`brand_id` =#{brandId},</if>
+            parent_id=#{parentId}
+    </insert>
+
+    <!-- 更新商品树 -->
+    <update id="updatePhotoArborescence" parameterType="com.xgt.bean.bs.PhotoBean">
+        UPDATE  bs_photo
+        <trim prefix="set" suffixOverrides=",">
+            <if test="text!=null">`name` = #{text},</if>
+            <if test="text!=null">`brand_id` =#{brandId},</if>
+        </trim>
+        WHERE id=#{id}
+    </update>
+
+</mapper>

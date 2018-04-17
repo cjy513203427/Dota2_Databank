@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dota.hero">
+    <sql id="sqlWhere">
+        WHERE 1=1
+        <if test="localizedName!=null and localizedName!=''">
+            AND localized_name LIKE CONCAT('%',#{localizedName},'%')
+        </if>
+    </sql>
+    <insert id="addHeroFromSteamAPI" parameterType="com.xgt.bean.dota.HeroBean">
+        INSERT hero SET id = #{id},name = #{name},localized_name = #{localizedName}
+    </insert>
+
+    <update id="addHeadportraitPathFromDOTA2OfficalWebsite" parameterType="com.xgt.bean.dota.HeroBean">
+        UPDATE hero SET headportrait_path = #{headportraitPath} WHERE id = #{id}
+    </update>
+
+    <update id="addHeroPathFromDOTA2OfficalWebsite" parameterType="com.xgt.bean.dota.HeroBean">
+        UPDATE hero SET hero_path = #{heroPath} WHERE id = #{id}
+    </update>
+
+    <select id="gainIdFromHeroByName" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT id FROM hero WHERE SUBSTRING(`name`,15) = #{name}
+    </select>
+
+    <select id="queryHero" parameterType="com.xgt.bean.dota.HeroBean" resultType="com.xgt.dao.entity.dota.Hero">
+        SELECT id,`name`,localized_name localizedName,headportrait_path headportraitPath,hero_path heroPath
+        FROM hero
+        <include refid="sqlWhere"/>
+        <include refid="common.Pagination_Limit"/>
+    </select>
+
+    <select id="countQueryHero" parameterType="com.xgt.bean.dota.HeroBean" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM hero
+        <include refid="sqlWhere"/>
+    </select>
+</mapper>

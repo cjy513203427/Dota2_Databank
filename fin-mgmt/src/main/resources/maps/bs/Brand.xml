@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bs.brand">
+    <sql id="sqlWhere">
+        WHERE 1=1
+        <if test="startTime!=null and startTime!='' ">
+            AND create_time >= CONCAT(#{startTime},'00:00:00')
+        </if>
+        <if test="endTime!=null and endTime!='' ">
+            AND create_time &lt;=CONCAT(#{endTime},'23:59:59')
+        </if>
+        <if test="brandName!=null and brandName !=''">
+            AND `name` = #{brandName}
+        </if>
+    </sql>
+    <select id="queryUserBrand" parameterType="java.lang.String" resultType="com.xgt.dao.entity.bs.Brand">
+        SELECT
+        bs.id,
+        bs.`name` name,
+        bub.brand_id brandId,
+        bub.user_id userId
+        FROM
+        bs_brand bs,
+        bs_user_brand bub
+        WHERE
+        bs.id = bub.brand_id
+        <if test="userId!=null and userId!='' ">
+        AND bub.user_id = #{userId}
+        </if>
+    </select>
+
+    <select id="queryUserBrandNotAllowed" parameterType="java.lang.String" resultType="com.xgt.dao.entity.bs.Brand">
+        SELECT
+        bub.id,
+        bs.`name`,
+        bub.user_id userId
+        FROM
+        bs_brand bs,
+        bs_user_brand bub
+        WHERE
+        bs.id = bub.brand_id
+        AND bub.is_approved = 0
+        <if test="userId!=null and userId!='' ">
+            AND bub.user_id = #{userId}
+        </if>
+    </select>
+
+    <select id="queryAllBrand" parameterType="com.xgt.bean.bs.BrandBean" resultType="com.xgt.dao.entity.bs.Brand">
+       SELECT
+            id,
+            `name`
+        FROM
+            bs_brand
+        <include refid="sqlWhere"></include>
+        <include refid="common.Pagination_Limit"/>
+    </select>
+
+    <select id="countAllBrand" parameterType="com.xgt.bean.bs.BrandBean"  resultType="java.lang.Integer">
+        SELECT COUNT(1)
+        FROM
+          bs_brand
+        <include refid="sqlWhere"></include>
+    </select>
+
+    <insert id="brandApplication" parameterType="com.xgt.bean.bs.BrandBean">
+        INSERT bs_user_brand SET user_id = #{userId},brand_id = #{brandId}
+    </insert>
+
+    <update id="approveBrandApplication" parameterType="com.xgt.bean.bs.BrandBean">
+        UPDATE bs_user_brand SET is_approved = 1 WHERE user_id = #{userId}
+    </update>
+
+    <insert id="addBrand" parameterType="com.xgt.bean.bs.BrandBean">
+        INSERT bs_brand SET `name` = #{name}
+    </insert>
+
+    <select id="judugeAddBrand" parameterType="com.xgt.bean.bs.BrandBean" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM bs_brand WHERE `name` = #{name}
+    </select>
+    <update id="modifyBrand" parameterType="com.xgt.bean.bs.BrandBean">
+        UPDATE bs_brand set `name` = #{name} WHERE id = #{id}
+    </update>
+
+    <update id="modifyBrandId" parameterType="com.xgt.bean.bs.PhotoBean">
+        UPDATE bs_photo SET brand_id = #{brandId} WHERE id = #{id}
+    </update>
+
+    <delete id="deleteBrand" parameterType="com.xgt.bean.bs.BrandBean">
+        DELETE FROM bs_brand WHERE id = #{id}
+    </delete>
+
+    <select id="gainBrandId" parameterType="com.xgt.bean.bs.BrandBean" resultType="java.lang.Integer">
+        SELECT id FROM bs_brand WHERE `name` = #{name};
+    </select>
+</mapper>

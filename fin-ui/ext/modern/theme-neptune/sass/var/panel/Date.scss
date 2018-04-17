@@ -1,0 +1,103 @@
+$datepanel-border-color: dynamic($base-color);
+$datepanel-border-style: dynamic(solid);
+$datepanel-border-width: dynamic(4px);
+$datepanel-border-radius: dynamic($datepanel-border-width);
+
+$datepanel-header-padding: dynamic(10px 0);
+$datepanel-header-tool-font-size: dynamic(20px);
+$datepanel-header-tool-font-weight: dynamic(normal);
+
+$datepanel-footer-height: dynamic(36px);
+
+$datepanel-view-border-color: dynamic($datepanel-border-color);
+$datepanel-view-border-style: dynamic($datepanel-border-style);
+$datepanel-view-border-width: dynamic($datepanel-border-width);
+$datepanel-view-border-radius: dynamic(0);
+
+$datepanel-caption-margin: dynamic(null);
+$datepanel-caption-padding: dynamic(null);
+$datepanel-caption-color: dynamic(#2c2c2c);
+$datepanel-caption-background-color: dynamic(null);
+$datepanel-caption-text-align: dynamic(center);
+$datepanel-caption-font-family: dynamic(null);
+$datepanel-caption-font-size: dynamic(null);
+$datepanel-caption-font-weight: dynamic(null);
+
+$datepanel-cell-height: dynamic(40px);
+$datepanel-cell-width: dynamic(40px);
+$datepanel-cell-margin: dynamic(6px);
+$datepanel-cell-padding: dynamic(null);
+$datepanel-cell-color: dynamic(#2c2c2c);
+$datepanel-cell-background-color: dynamic(#ffffff);
+$datepanel-cell-border-color: dynamic(transparent);
+$datepanel-cell-border-style: dynamic(solid);
+$datepanel-cell-border-width: dynamic(1px);
+$datepanel-cell-text-align: dynamic(center);
+$datepanel-cell-font-family: dynamic(null);
+$datepanel-cell-font-size: dynamic(null);
+$datepanel-cell-font-weight: dynamic(null);
+
+$datepanel-selected-cell-color: dynamic(#ffffff);
+$datepanel-selected-cell-background-color: dynamic($base-color);
+$datepanel-focused-cell-border-color: dynamic($base-color);
+$datepanel-focused-cell-border-style: dynamic($datepanel-cell-border-style);
+$datepanel-focused-cell-border-width: dynamic($datepanel-cell-border-width);
+
+$datepanel-header-cell-height: dynamic($datepanel-cell-height);
+$datepanel-header-cell-width: dynamic($datepanel-cell-width);
+$datepanel-header-cell-text-align: dynamic($datepanel-cell-text-align);
+$datepanel-header-cell-margin: dynamic($datepanel-cell-margin);
+$datepanel-header-cell-padding: dynamic($datepanel-cell-padding);
+$datepanel-header-cell-color: dynamic(#4c4c4c);
+$datepanel-header-cell-background-color: dynamic(#f5f5f5);
+$datepanel-header-cell-font-family: dynamic($datepanel-cell-font-family);
+$datepanel-header-cell-font-size: dynamic($datepanel-cell-font-size);
+$datepanel-header-cell-font-weight: dynamic(bold);
+
+$datepanel-body-cell-height: dynamic($datepanel-cell-height);
+$datepanel-body-cell-width: dynamic($datepanel-cell-width);
+$datepanel-body-cell-text-align: dynamic($datepanel-cell-text-align);
+$datepanel-body-cell-margin: dynamic($datepanel-cell-margin);
+$datepanel-body-cell-padding: dynamic($datepanel-cell-padding);
+$datepanel-body-cell-color: dynamic($datepanel-cell-color);
+$datepanel-body-cell-background-color: dynamic($datepanel-cell-background-color);
+$datepanel-body-cell-font-family: dynamic($datepanel-cell-font-family);
+$datepanel-body-cell-font-size: dynamic($datepanel-cell-font-size);
+$datepanel-body-cell-font-weight: dynamic($datepanel-cell-font-weight);
+
+$datepanel-prev-month-color: dynamic(#dedede);
+$datepanel-prev-month-background-color: dynamic($datepanel-cell-background-color);
+$datepanel-prev-month-border-color: dynamic($datepanel-cell-border-color);
+$datepanel-prev-month-border-style: dynamic($datepanel-cell-border-style);
+$datepanel-prev-month-border-width: dynamic($datepanel-cell-border-width);
+
+$datepanel-next-month-color: dynamic(#dedede);
+$datepanel-next-month-background-color: dynamic($datepanel-cell-background-color);
+$datepanel-next-month-border-color: dynamic($datepanel-cell-border-color);
+$datepanel-next-month-border-style: dynamic($datepanel-cell-border-style);
+$datepanel-next-month-border-width: dynamic($datepanel-cell-border-width);
+
+$datepanel-today-color: dynamic($datepanel-cell-color);
+$datepanel-today-background-color: dynamic(transparent);
+$datepanel-today-border-color: dynamic(#2181c7);
+$datepanel-today-border-style: dynamic($datepanel-cell-border-style);
+$datepanel-today-border-width: dynamic($datepanel-cell-border-width);
+
+$datepanel-special-date-color: dynamic($datepanel-cell-color);
+$datepanel-special-date-background-color: dynamic(#c1ddf0);
+$datepanel-special-date-border-color: dynamic($datepanel-cell-border-color);
+$datepanel-special-date-border-style: dynamic($datepanel-cell-border-style);
+$datepanel-special-date-border-width: dynamic($datepanel-cell-border-width);
+
+$datepanel-weekend-color: dynamic($datepanel-cell-color);
+$datepanel-weekend-background-color: dynamic(#f9f9f9);
+$datepanel-weekend-columns: dynamic(true);
+$datepanel-weekend-border-color: dynamic($datepanel-cell-border-color);
+$datepanel-weekend-border-style: dynamic($datepanel-cell-border-style);
+$datepanel-weekend-border-width: dynamic($datepanel-cell-border-width);
+
+$datepanel-disabled-day-color: dynamic($datepanel-cell-color);
+$datepanel-disabled-day-background-color: dynamic(#ededed);
+$datepanel-disabled-day-border-color: dynamic($datepanel-cell-border-color);
+$datepanel-disabled-day-border-style: dynamic($datepanel-cell-border-style);
+$datepanel-disabled-day-border-width: dynamic($datepanel-cell-border-width);

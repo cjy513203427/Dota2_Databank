@@ -1,0 +1,359 @@
+.#{$prefix}datepanel {
+    $inner-line-height: dynamic($datepanel-body-cell-height);
+    $weekend-cell-margin: dynamic(null);
+
+    @if $datepanel-body-cell-margin != null {
+        $inner-line-height: $inner-line-height - ($datepanel-body-cell-margin * 2);
+
+        @if $datepanel-weekend-columns {
+            $weekend-cell-margin: $datepanel-body-cell-margin;
+        }
+    }
+
+    /* TODO Take cell padding into account in weekend margin calculations */
+    @if ($datepanel-body-cell-padding != null) {
+        $inner-line-height: $inner-line-height - ($datepanel-body-cell-padding * 2);
+    }
+
+    @if $datepanel-border-width != null {
+        @include border(
+            $color: $datepanel-border-color,
+            $style: $datepanel-border-style,
+            $width: $datepanel-border-width
+        );
+
+        border-radius: $datepanel-border-radius;
+    }
+
+    .#{$prefix}panelheader {
+        padding: $datepanel-header-padding;
+
+        @if $datepanel-header-tool-font-size != null {
+            .#{$prefix}left-month-tool, .#{$prefix}left-year-tool,
+            .#{$prefix}right-month-tool, .#{$prefix}right-year-tool {
+                width: $datepanel-header-tool-font-size;
+                height: $datepanel-header-tool-font-size;
+                opacity: 1;
+
+                .#{$prefix}icon-el:before {
+                    font-size: $datepanel-header-tool-font-size;
+                    line-height: $datepanel-header-tool-font-size;
+
+                    @if $datepanel-header-tool-font-weight != null {
+                        font-weight: $datepanel-header-tool-font-weight;
+                    }
+                }
+            }
+        }
+    }
+
+    .#{$prefix}datepanel-footer {
+        background-color: transparent;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-left-width: 0 !important;
+    }
+
+    .#{$prefix}datepanelview {
+        width: $datepanel-cell-width * 7;
+        padding-bottom: $datepanel-footer-height;
+    }
+
+    @if $datepanel-view-border-width != null {
+        .#{$prefix}panel-body-el {
+            margin-left: -($datepanel-view-border-width);
+        }
+
+        .#{$prefix}datepanelview {
+            border-width: 0;
+            border-left-color: $datepanel-view-border-color;
+            border-left-style: $datepanel-view-border-style;
+            border-left-width: $datepanel-view-border-width;
+        }
+
+        .#{$prefix}layout-carousel-singular .#{$prefix}layout-carousel-item {
+            border-left-width: 0;
+        }
+    }
+
+    .#{$prefix}caption {
+        margin: $datepanel-caption-margin;
+        padding: $datepanel-caption-padding;
+
+        color: $datepanel-caption-color;
+        background-color: $datepanel-caption-background-color;
+
+        text-align: $datepanel-caption-text-align;
+
+        @include font(
+            $font-weight: $datepanel-caption-font-weight,
+            $font-size: $datepanel-caption-font-size,
+            $font-family: $datepanel-caption-font-family,
+            $line-height: $inner-line-height
+        );
+    }
+
+    .#{$prefix}cell {
+        cursor: pointer;
+
+        .#{$prefix}inner {
+            cursor: pointer;
+            @include border(
+                $width: $datepanel-cell-border-width,
+                $style: $datepanel-cell-border-style,
+                $color: $datepanel-cell-border-color
+            );
+        }
+    }
+
+    .#{$prefix}header .#{$prefix}cell {
+        height: $datepanel-header-cell-height;
+        width: $datepanel-header-cell-width;
+
+        .#{$prefix}inner {
+            margin: $datepanel-header-cell-margin;
+            padding: $datepanel-header-cell-padding;
+        }
+
+        color: $datepanel-header-cell-color;
+        background-color: $datepanel-header-cell-background-color;
+        text-align: $datepanel-header-cell-text-align;
+
+        @include font(
+            $font-weight: $datepanel-header-cell-font-weight,
+            $font-size: $datepanel-header-cell-font-size,
+            $font-family: $datepanel-header-cell-font-family,
+            $line-height: $inner-line-height
+        );
+    }
+
+    @if $weekend-cell-margin != null {
+        .#{$prefix}body tr:first-child .#{$prefix}cell.#{$prefix}weekend .#{$prefix}inner {
+            margin-top: $weekend-cell-margin;
+            margin-bottom: 0;
+            padding-top: 0;
+            padding-bottom: $weekend-cell-margin;
+        }
+
+        .#{$prefix}body tr:last-child .#{$prefix}cell.#{$prefix}weekend .#{$prefix}inner {
+            margin-top: 0;
+            margin-bottom: $weekend-cell-margin;
+            padding-top: $weekend-cell-margin;
+            padding-bottom: 0;
+        }
+    }
+
+    .#{$prefix}body .#{$prefix}cell {
+        height: $datepanel-body-cell-height;
+        width: $datepanel-body-cell-width;
+
+        .#{$prefix}inner {
+            position: relative;
+            z-index: 1;
+            margin: $datepanel-body-cell-margin;
+            padding: $datepanel-body-cell-padding;
+            line-height: $inner-line-height;
+        }
+
+        color: $datepanel-body-cell-color;
+        background-color: $datepanel-body-cell-background-color;
+
+        text-align: $datepanel-body-cell-text-align;
+
+        @include font(
+            $font-weight: $datepanel-body-cell-font-weight,
+            $font-size: $datepanel-body-cell-font-size,
+            $font-family: $datepanel-body-cell-font-family
+        );
+
+        &.#{$prefix}prev-month .#{$prefix}inner {
+            color: $datepanel-prev-month-color;
+            background-color: $datepanel-prev-month-background-color;
+
+            @include border(
+                $width: $datepanel-prev-month-border-width,
+                $style: $datepanel-prev-month-border-style,
+                $color: $datepanel-prev-month-border-color
+            );
+        }
+
+        &.#{$prefix}next-month .#{$prefix}inner {
+            color: $datepanel-next-month-color;
+            background-color: $datepanel-next-month-background-color;
+
+            @include border(
+                $width: $datepanel-next-month-border-width,
+                $style: $datepanel-next-month-border-style,
+                $color: $datepanel-next-month-border-color
+            );
+        }
+
+        &.#{$prefix}special-date .#{$prefix}inner {
+            color: $datepanel-special-date-color;
+
+            &:before {
+                content: '';
+                display: block;
+                z-index: -1;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: $datepanel-special-date-background-color;
+
+                @include border(
+                    $width: $datepanel-special-date-border-width,
+                    $style: $datepanel-special-date-border-style,
+                    $color: $datepanel-special-date-border-color
+                );
+            }
+        }
+
+        &.#{$prefix}weekend .#{$prefix}inner {
+            color: $datepanel-weekend-color;
+            background-color: $datepanel-weekend-background-color;
+
+            @if $weekend-cell-margin != null {
+                margin-top: 0;
+                margin-bottom: 0;
+                padding-top: $weekend-cell-margin;
+                padding-bottom: $weekend-cell-margin;
+            }
+
+            @include border {
+                $width: $datepanel-weekend-border-width,
+                $style: $datepanel-weekend-border-style,
+                $color: $datepanel-weekend-border-color
+            }
+        }
+
+        &.#{$prefix}disabled-day .#{$prefix}inner {
+            color: $datepanel-disabled-day-color;
+
+            &:before {
+                content: '';
+                display: block;
+                z-index: -1;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: $datepanel-disabled-day-background-color;
+
+                @include border(
+                    $width: $datepanel-disabled-day-border-width,
+                    $style: $datepanel-disabled-day-border-style,
+                    $color: $datepanel-disabled-day-border-color
+                );
+            }
+        }
+
+        &.#{$prefix}today .#{$prefix}inner {
+            color: $datepanel-today-color;
+
+            &:after {
+                content: '';
+                display: block;
+                z-index: -1;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: $datepanel-today-background-color;
+
+                @include border(
+                    $width: $datepanel-today-border-width,
+                    $style: $datepanel-today-border-style,
+                    $color: $datepanel-today-border-color
+                );
+            }
+        }
+
+        &:focus {
+            outline: none;
+
+            .#{$prefix}inner:before {
+                content: '';
+                display: block;
+                z-index: -1;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                @include border(
+                    $width: $datepanel-focused-cell-border-width,
+                    $style: $datepanel-focused-cell-border-style,
+                    $color: $datepanel-focused-cell-border-color
+                );
+            }
+        }
+
+        &.#{$prefix}selected {
+
+            .#{$prefix}inner {
+                color: $datepanel-selected-cell-color;
+            }
+
+            .#{$prefix}inner:before {
+                content: '';
+                display: block;
+                z-index: -1;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: $datepanel-selected-cell-background-color;
+            }
+        }
+    }
+
+    @if $weekend-cell-margin != null {
+        .#{$prefix}body .#{$prefix}cell.#{$prefix}weekend {
+            &.#{$prefix}special-date, &.#{$prefix}disabled-day, &.#{$prefix}selected {
+                .#{$prefix}inner:before {
+                    top: $weekend-cell-margin;
+                    bottom: $weekend-cell-margin;
+                }
+            }
+
+            &.#{$prefix}today .#{$prefix}inner:after {
+                top: $weekend-cell-margin;
+                bottom: $weekend-cell-margin;
+            }
+        }
+
+        .#{$prefix}body tr:first-child .#{$prefix}cell.#{$prefix}weekend {
+            &.#{$prefix}special-date, &.#{$prefix}disabled-day, &.#{$prefix}selected {
+                .#{$prefix}inner:before {
+                    top: 0;
+                    bottom: $weekend-cell-margin;
+                }
+            }
+
+            &.#{$prefix}today .#{$prefix}inner:after {
+                top: 0;
+                bottom: $weekend-cell-margin;
+            }
+        }
+
+        .#{$prefix}body tr:last-child .#{$prefix}cell.#{$prefix}weekend {
+            &.#{$prefix}today .#{$prefix}inner:after {
+                top: $weekend-cell-margin;
+                bottom: 0;
+            }
+
+            &.#{$prefix}special-date, &.#{$prefix}disabled-day, &.#{$prefix}selected {
+                .#{$prefix}inner:before {
+                    top: $weekend-cell-margin;
+                    bottom: 0;
+                }
+            }
+        }
+    }
+}

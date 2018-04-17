@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dota.item">
+    <sql id="sqlWhere">
+        WHERE 1=1
+        <if test="localizedName!=null and localizedName!=''">
+          AND `localized_name` LIKE CONCAT ('%',#{localizedName},'%')
+        </if>
+    </sql>
+    <insert id="addGameItemFromSteamAPI" parameterType="com.xgt.bean.dota.ItemBean">
+        INSERT item SET id = #{id},name = #{name},cost = #{cost},secret_shop = #{secretShop},
+        side_shop = #{sideShop},recipe = #{recipe},localized_name = #{localizedName}
+    </insert>
+
+    <update id="addItemPathFromDOTA2OfficalWebsite" parameterType="com.xgt.bean.dota.ItemBean">
+        UPDATE item SET item_path = #{itemPath} WHERE id = #{id}
+    </update>
+
+    <select id="gainIdFromItemByName" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT id FROM item WHERE SUBSTRING(`name`,6) = #{name}
+    </select>
+
+    <select id="queryItem" parameterType="com.xgt.bean.dota.ItemBean" resultType="com.xgt.dao.entity.dota.Item">
+        SELECT id,`name`,cost,secret_shop secretShop,side_shop sideShop,recipe,item_path itemPath,
+        localized_name localizedName,item_path itemPath,chinese_name chineseName FROM item
+        <include refid="sqlWhere"/>
+        <include refid="common.Pagination_Limit"/>
+    </select>
+
+    <select id="countQueryItem" parameterType="com.xgt.bean.dota.ItemBean" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM item
+        <include refid="sqlWhere"/>
+    </select>
+
+    <select id="queryChineseNameItem" parameterType="Integer" resultType="com.xgt.dao.entity.dota.Item">
+        SELECT id,`name`,cost,secret_shop secretShop,side_shop sideShop,recipe,item_path itemPath,
+        localized_name localizedName,item_path itemPath,chinese_name chineseName FROM item
+        WHERE chinese_name is NOT NULL and upgrated_item = #{upgratedItem}
+    </select>
+
+    <select id="queryItemCompound" parameterType="Integer" resultType="com.xgt.dao.entity.dota.Item">
+        SELECT
+            i.chinese_name chineseName,
+            i.item_path itemPath,
+            ic.compound_item_id id
+        FROM
+            item i,
+            item_compound ic
+        WHERE
+            ic.item_id = #{itemId}
+        AND i.id = ic.compound_item_id
+    </select>
+
+    <select id="queryItemFather" parameterType="Integer" resultType="com.xgt.dao.entity.dota.Item">
+        SELECT
+            DISTINCT i.chinese_name chineseName,
+            i.item_path itemPath,
+            ic.item_id id
+        FROM
+            item i,
+            item_compound ic
+        WHERE
+            ic.compound_item_id = #{itemId} AND i.id = ic.item_id
+    </select>
+</mapper>

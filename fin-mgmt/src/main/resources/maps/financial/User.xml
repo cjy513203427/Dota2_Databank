@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="financial.user">
+
+    <sql id="sql_where">
+        1=1
+        <if test="username!=null">
+            AND u.username LIKE CONCAT('%',#{username},'%')
+        </if>
+        <if test="userType!=null">
+            AND cr.id = #{userType}
+        </if>
+        <if test="realname!=null">
+            AND u.realname =#{realname}
+        </if>
+        <if test="workno!=null">
+            AND u.workno =#{workno}
+        </if>
+        <if test="departmentId!=null">
+            AND NOT EXISTS (SELECT 1 FROM DEPARTMENT_USER DU WHERE DU.USER_ID=U.ID AND DU.DEPARTMENT_ID=#{departmentId})
+        </if>
+    </sql>
+
+    <select id="selectExistUser" resultType="com.xgt.dao.entity.User" parameterType="com.xgt.bean.UserBean">
+        SELECT  u.id userId,u.password password,u.username username  FROM ct_user u WHERE
+        1=1
+        <if test="username!=null">
+        AND u.username = #{username}
+        </if>
+        limit 1
+    </select>
+
+    <!-- 获取用户信息 -->
+    <select id="selectUser" resultType="com.xgt.dao.entity.User" parameterType="String">
+        SELECT  u.id userId,u.password password,u.username username,u.workno,u.realname,
+        modify_password modifyPassword,office_login officeLogin
+        FROM ct_user u WHERE u.username = #{username} AND status=1 limit 1
+    </select>
+
+    <!-- 获取用户信息 -->
+    <select id="getUserByOpenId" resultType="com.xgt.dao.entity.User" parameterType="String">
+        SELECT  u.id userId,u.password password,u.username username,u.workno,u.realname,
+        modify_password modifyPassword,office_login officeLogin,u.status
+        FROM ct_user u WHERE u.openid = #{open_id} limit 1
+    </select>
+
+    <!-- 获取用户信息 -->
+    <select id="getUserByUserId" resultType="com.xgt.dao.entity.User" parameterType="String">
+        SELECT  u.id userId,u.password password,u.username username,u.workno,u.realname
+        ,u.status
+        FROM ct_user u WHERE u.dingid = #{userid} limit 1
+    </select>
+
+    <!-- 获取用户信息 -->
+    <select id="getUserIdByQq" resultType="int" parameterType="String">
+        SELECT  u.id userId
+        FROM ct_user u WHERE u.qq = #{qq} limit 1
+    </select>
+
+
+
+
+    <!-- 获取用户信息 -->
+    <select id="selectUserList" resultType="com.xgt.dao.entity.User" parameterType="com.xgt.bean.UserBean">
+        SELECT
+        u.id userId,u.workno,u.qq,u.realname,u.sex,cr.`name`
+        userType,u.password,u.username,u.qq,u.description,u.status,u.create_time createTime,u.update_time updateTime,
+        u.id_number idNumber,u.id_path idPath,u.entryform_path entryformPath,u.phone,office_login officeLogin
+        FROM ct_user u
+        INNER JOIN ct_user_role cur ON u.id = cur.user_id
+        INNER JOIN ct_role cr ON cr.id = cur.role_id
+        WHERE
+        <include refid="sql_where"/>
+        GROUP BY u.id
+        ORDER BY u.status DESC,u.id DESC
+        <include refid="common.Pagination_Limit"/>
+    </select>
+    <select id="countUser" resultType="int" parameterType="com.xgt.bean.UserBean">
+        SELECT count(DISTINCT u.id) FROM ct_user u
+        INNER JOIN ct_user_role cur ON u.id = cur.user_id
+        INNER JOIN ct_role cr ON cr.id = cur.role_id
+        WHERE
+        <include refid="sql_where"/>
+    </select>
+
+
+    <insert id="insertUser" parameterType="com.xgt.bean.UserBean" useGeneratedKeys="true" keyProperty="userId">
+        INSERT INTO ct_user SET username=#{username}, password=#{password},qq=#{qq},
+        description=#{description}, realname=#{realname}
+        , workno=#{workno}, sex=#{sex},id_number=#{idNumber},phone=#{phone}
+        <if test="idPathName!=null">
+            ,id_path=#{idPathName}
+        </if>
+        <if test="entryformPathName!=null">
+            ,entryform_path=#{entryformPathName}
+        </if>
+    </insert>
+
+    <update id="deleteUser" parameterType="map">
+        UPDATE ct_user SET status=#{status} WHERE id IN
+        <foreach collection="userIds" item="userId" index="index"
+                 open="(" close=")" separator=",">
+            #{userId}
+        </foreach>
+    </update>
+
+    <update id="updateUser" parameterType="com.xgt.bean.UserBean">
+        UPDATE ct_user SET
+        <if test="workno!=null">
+            workno=#{workno},
+        </if>
+        <!--<if test="username!=null">
+            username=#{username},
+        </if>
+        <if test="userType!=null">
+            user_type=#{userType},
+        </if>-->
+        <if test="realname!=null">
+            realname=#{realname},
+        </if>
+        <if test="qq!=null">
+            qq=#{qq},
+        </if>
+        <if test="sex!=null">
+            sex=#{sex},
+        </if>
+        <if test="phone!=null">
+            phone=#{phone},
+        </if>
+        <if test="status!=null">
+            status=#{status},
+        </if>
+        <if test="description!=null">
+            description=#{description},
+        </if>
+        <if test="idNumber!=null">
+            id_number=#{idNumber},
+        </if>
+        <if test="idPathName!=null and idPathName!=''">
+            id_path=#{idPathName},
+        </if>
+        <if test="entryformPathName!=null and entryformPathName!=''">
+            entryform_path=#{entryformPathName},
+        </if>
+        <if test="officeLogin!=null">
+            office_login=#{officeLogin},
+        </if>
+        update_time=now()
+        WHERE id=#{userId}
+    </update>
+
+    <update id="modifyPassword" parameterType="map">
+        <!--  <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+              update ct_user
+              <set>
+                  password=#{item.password}
+              </set>
+              where id = #{item.id}
+          </foreach>-->
+        update ct_user
+        <set>
+            password=#{password},modify_password=1
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <select id="selectUsernameListById" resultType="com.xgt.dao.entity.User" parameterType="list">
+        SELECT u.id userId,u.password password,u.username username FROM ct_user u
+        <where>id IN
+            <foreach collection="list" item="userId" index="index"
+                     open="(" close=")" separator=",">
+                #{userId}
+            </foreach>
+        </where>
+    </select>
+
+    <select id="queryPersonalSetting" parameterType="com.xgt.bean.UserBean" resultType="com.xgt.dao.entity.User">
+        SELECT
+            username,
+            realname,
+            phone
+        FROM
+
+	ct_user
+	WHERE id=#{userId}
+    </select>
+
+    <select id="selectUserId" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT id FROM ct_user WHERE username = #{username}
+    </select>
+
+</mapper>

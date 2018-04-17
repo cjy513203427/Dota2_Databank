@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.ning:async-http-client:1.9.32">
+    <CLASSES>
+      <root url="jar://D:/maven/LocalWareHouse/Dota2_Databank_Repository/com/ning/async-http-client/1.9.32/async-http-client-1.9.32.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/maven/LocalWareHouse/Dota2_Databank_Repository/com/ning/async-http-client/1.9.32/async-http-client-1.9.32-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/maven/LocalWareHouse/Dota2_Databank_Repository/com/ning/async-http-client/1.9.32/async-http-client-1.9.32-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

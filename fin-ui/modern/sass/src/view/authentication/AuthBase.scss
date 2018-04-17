@@ -1,0 +1,12 @@
+.auth-locked-body-el {
+    background-image:url('images/Lock-Screen-Background-Karl.jpg');
+    background-size:cover;
+    .x-panel-body-el.auth-locked-body-el {
+        background-color: transparent;
+    }
+}
+
+.lockscreen-header{
+    background-color:$base-color;
+    color:white;
+}

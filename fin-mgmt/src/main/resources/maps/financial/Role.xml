@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="financial.role">
+
+    <!-- 查询角色 -->
+    <select id="selectRole" resultType="com.xgt.dao.entity.Role">
+        SELECT id,name,description FROM ct_role where status = 1
+    </select>
+
+    <!--查询所有角色信息-->
+    <select id="selectAllRole" resultType="com.xgt.bean.RoleBean" parameterType="map">
+        SELECT id,name,description,status, update_time updateTime,create_time createTime FROM ct_role r WHERE r.status = 1
+        <include refid="common.Pagination_Limit" />
+    </select>
+
+
+    <!--查询角色总数-->
+    <select id="countRole" resultType="int">
+         SELECT COUNT(id) FROM ct_role
+    </select>
+
+    <!--查询某个角色-->
+    <select id="selectSingleRole" resultType="com.xgt.bean.RoleBean" parameterType="com.xgt.bean.RoleBean">
+        SELECT r.id,r.name FROM ct_role r WHERE name = #{name} LIMIT 1
+    </select>
+
+
+
+    <!-- 查询用户角色 -->
+    <select id="selectRoleByUserId" resultType="com.xgt.dao.entity.Role" parameterType="int">
+       SELECT r.id,r.name,r.description FROM ct_role r
+       LEFT JOIN ct_user_role ur on ur.role_id=r.id
+       WHERE ur.user_id = #{userId} AND r.status = 1
+    </select>
+
+    <insert id="insertRole" parameterType="com.xgt.bean.RoleBean" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO ct_role SET
+           name=#{name},
+           status=#{status},
+        <if test="description!=null">
+            description=#{description},
+        </if>
+            create_time=now()
+    </insert>
+
+    <update id="updateRole" parameterType="com.xgt.bean.RoleBean">
+        UPDATE ct_role SET
+        <if test="name!=null">
+            NAME=#{name},
+        </if>
+        <if test="description!=null">
+            description=#{description},
+        </if>
+        <if test="status!=null">
+            status=#{status},
+        </if>
+        update_time=now()
+        WHERE  id=#{id}
+    </update>
+
+    <update id="updateRoleStatus" parameterType="map">
+        UPDATE ct_role SET status=#{status} WHERE id IN
+        <foreach collection="roleIds" item="roleId" index="index"
+                 open="(" close=")" separator=",">
+            #{roleId}
+        </foreach>
+    </update>
+
+</mapper>

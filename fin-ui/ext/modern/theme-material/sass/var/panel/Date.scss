@@ -1,0 +1,17 @@
+$datepanel-border-width: dynamic(null);
+$datepanel-header-tool-offset: dynamic(40px);
+$datepanel-footer-height: dynamic(48px);
+$datepanel-view-background-color: dynamic(#ffffff);
+$datepanel-view-border-width: dynamic(1px);
+$datepanel-view-border-color: dynamic($faded-color);
+$datepanel-caption-background-color: dynamic(#ffffff);
+$datepanel-caption-font-weight: dynamic(bold);
+$datepanel-cell-margin: dynamic(4px);
+$datepanel-cell-border-radius: dynamic(50px);
+$datepanel-header-cell-background-color: dynamic($datepanel-cell-background-color);
+$datepanel-selected-cell-background-color: dynamic(#2b99f0);
+$datepanel-prev-month-color: dynamic(#c1c1c1);
+$datepanel-next-month-color: dynamic(transparent);
+$datepanel-weekend-background-color: dynamic(#eeeeee);
+$datepanel-special-date-background-color: dynamic(#bbdffa);
+$datepanel-disabled-day-background-color: dynamic(#e0e0e0);

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.jboss.resteasy:async-http-servlet-3.0:3.0.18.Final">
+    <CLASSES>
+      <root url="jar://D:/maven/LocalWareHouse/Dota2_Databank_Repository/org/jboss/resteasy/async-http-servlet-3.0/3.0.18.Final/async-http-servlet-3.0-3.0.18.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/maven/LocalWareHouse/Dota2_Databank_Repository/org/jboss/resteasy/async-http-servlet-3.0/3.0.18.Final/async-http-servlet-3.0-3.0.18.Final-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/maven/LocalWareHouse/Dota2_Databank_Repository/org/jboss/resteasy/async-http-servlet-3.0/3.0.18.Final/async-http-servlet-3.0-3.0.18.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

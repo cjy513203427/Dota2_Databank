@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bs.photo">
+    <sql id="sqlWhere">
+        WHERE version_type=1
+        <if test="startTime!=null and startTime!='' ">
+            AND add_time >= CONCAT(#{startTime},'00:00:00')
+        </if>
+        <if test="endTime!=null and endTime!='' ">
+            AND add_time &lt;=CONCAT(#{endTime},'23:59:59')
+        </if>
+        <if test="keyWord!=null and keyWord!='' ">
+            AND CONCAT(bp.photo_number,bp.`condition`,bp.specification) LIKE CONCAT('%',#{keyWord},'%')
+        </if>
+        <if test="brandId!=null and brandId!='' ">
+            AND bb.id = #{brandId}
+        </if>
+    </sql>
+    <select id="queryPhoto" parameterType="com.xgt.bean.bs.PhotoBean" resultType="com.xgt.dao.entity.bs.Photo">
+        SELECT
+        bp.id,
+        bb.`name` brandName,
+        bp.`name` text,
+        bp.photo_url photoUrl,
+        bp.number,
+        bp.model,
+        bp.type,
+        bp.dwg_url dwgUrl,
+        bp.add_time addTime,
+        bp.modify_time modifyTime,
+        bp.parent_id parentId,
+        bp.photo_number photoNumber,
+        bp.`description`,
+        bp.`condition`,
+        bp.specification,
+        bp.version_name versionName
+        FROM
+        bs_photo bp INNER JOIN bs_brand bb ON bp.brand_id = bb.id
+        INNER JOIN bs_user_brand bub ON bub.brand_id = bb.id AND bp.brand_id = bub.brand_id
+        INNER JOIN ct_user cu ON cu.id = bub.user_id AND bub.user_id =#{userId}
+        <include refid="sqlWhere"/>
+        ORDER BY bp.photo_number DESC
+        <include refid="common.Pagination_Limit"/>
+    </select>
+
+    <select id="queryHistoryPhoto" parameterType="com.xgt.bean.bs.PhotoBean" resultType="com.xgt.dao.entity.bs.Photo">
+        SELECT
+        bp.id,
+        bb.`name` brandName,
+        bp.`name` text,
+        bp.photo_url photoUrl,
+        bp.number,
+        bp.model,
+        bp.type,
+        bp.dwg_url dwgUrl,
+        bp.add_time addTime,
+        bp.modify_time modifyTime,
+        bp.parent_id parentId,
+        bp.photo_number photoNumber,
+        bp.`description`,
+        bp.`condition`,
+        bp.specification,
+        bp.version_name versionName
+        FROM
+        bs_photo bp INNER JOIN bs_brand bb ON bp.brand_id = bb.id
+        INNER JOIN bs_user_brand bub ON bub.brand_id = bb.id AND bp.brand_id = bub.brand_id
+        INNER JOIN ct_user cu ON cu.id = bub.user_id AND bub.user_id =#{userId}
+        WHERE version_type=0
+        <if test="startTime!=null and startTime!='' ">
+            AND add_time >= CONCAT(#{startTime},'00:00:00')
+        </if>
+        <if test="endTime!=null and endTime!='' ">
+            AND add_time &lt;=CONCAT(#{endTime},'23:59:59')
+        </if>
+        <if test="keyWord!=null and keyWord!='' ">
+            AND CONCAT(bp.photo_number,bp.`condition`,bp.specification) LIKE CONCAT('%',#{keyWord},'%')
+        </if>
+        <if test="brandId!=null and brandId!='' ">
+            AND bb.id = #{brandId}
+        </if>
+        ORDER BY bp.photo_number DESC
+        <include refid="common.Pagination_Limit"/>
+    </select>
+
+    <select id="queryChildrenPhoto" parameterType="com.xgt.bean.bs.PhotoBean" resultType="com.xgt.dao.entity.bs.Photo">
+        SELECT
+            bp.id,
+            bb.`name` brandName,
+            bp.`name` text,
+            bp.photo_url photoUrl,
+            bp.number,
+            bp.model,
+            bp.dwg_url dwgUrl,
+            bp.add_time addTime,
+            bp.modify_time modifyTime,
+            bp.photo_number photoNumber,
+            bp.`description`,
+            bp.`condition`,
+            bp.specification,
+            bp.version_name versionName
+        FROM
+        bs_photo bp INNER JOIN bs_brand bb ON bp.brand_id = bb.id
+        INNER JOIN bs_user_brand bub ON bp.brand_id = bub.brand_id
+        WHERE version_type=1 AND bp.parent_id = #{parentId}
+        <if test="keyWord!=null and keyWord!='' ">
+            AND CONCAT(bb.`name`,bp.`condition`,bp.specification) LIKE CONCAT('%',#{keyWord},'%')
+        </if>
+        GROUP BY bp.id
+        ORDER BY bp.add_time DESC
+    </select>
+
+    <select id="countChildNodes" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM bs_photo WHERE parent_id = #{parentId} AND version_type = 1
+    </select>
+
+    <update id="updatePhotoUrl" parameterType="com.xgt.bean.bs.PhotoBean">
+        UPDATE bs_photo SET photo_url = #{picturePathName} WHERE `name` = #{name}
+    </update>
+
+    <update id="updateCadUrl" parameterType="com.xgt.bean.bs.PhotoBean">
+        UPDATE bs_photo SET dwg_url = #{cadPathName} WHERE `name` = #{name}
+    </update>
+
+    <select id="countQueryPhoto" parameterType="com.xgt.bean.bs.PhotoBean" resultType="java.lang.Integer">
+        SELECT
+            count(1)
+            FROM
+        bs_photo bp INNER JOIN bs_brand bb ON bp.brand_id = bb.id
+        INNER JOIN bs_user_brand bub ON bub.brand_id = bb.id AND bp.brand_id = bub.brand_id
+        INNER JOIN ct_user cu ON cu.id = bub.user_id AND bub.user_id =#{userId}
+        <include refid="sqlWhere"/>
+    </select>
+
+    <select id="countQueryHistoryPhoto" parameterType="com.xgt.bean.bs.PhotoBean" resultType="java.lang.Integer">
+        SELECT
+        count(1)
+        FROM
+        bs_photo bp INNER JOIN bs_brand bb ON bp.brand_id = bb.id
+        INNER JOIN bs_user_brand bub ON bub.brand_id = bb.id AND bp.brand_id = bub.brand_id
+        INNER JOIN ct_user cu ON cu.id = bub.user_id AND bub.user_id =#{userId}
+        WHERE version_type=0
+        <if test="startTime!=null and startTime!='' ">
+            AND add_time >= CONCAT(#{startTime},'00:00:00')
+        </if>
+        <if test="endTime!=null and endTime!='' ">
+            AND add_time &lt;=CONCAT(#{endTime},'23:59:59')
+        </if>
+        <if test="keyWord!=null and keyWord!='' ">
+            AND CONCAT(bp.photo_number,bp.`condition`,bp.specification) LIKE CONCAT('%',#{keyWord},'%')
+        </if>
+        <if test="brandId!=null and brandId!='' ">
+            AND bb.id = #{brandId}
+        </if>
+    </select>
+
+    <delete id="deletePhoto" parameterType="com.xgt.bean.bs.PhotoBean">
+        DELETE FROM bs_photo WHERE id = #{id}
+    </delete>
+
+    <insert id="addPhoto" parameterType="com.xgt.bean.bs.PhotoBean">
+        INSERT INTO bs_photo (
+            `model`,
+            `type`,
+            `name`,
+            `parent_id`,
+            `photo_number`,
+            `description`,
+            `condition`,
+            `specification`,
+            `version_name`,
+            `brand_id`,
+            `photo_url`,
+            `dwg_url`
+          )
+        VALUES
+        (
+            #{model},
+            #{type},
+            #{name},
+            #{parentId},
+            #{photoNumber},
+            #{description},
+            #{condition},
+            #{specification},
+            #{versionName},
+            #{brandId},
+            #{picturePathName},
+            #{cadPathName}
+        );
+     </insert>
+
+    <select id="judgeAddPhoto" parameterType="com.xgt.bean.bs.PhotoBean" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM bs_photo WHERE `name` = #{name}
+    </select>
+
+    <select id="judgeAddPhotoArborescence" parameterType="com.xgt.bean.bs.PhotoBean" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM bs_photo WHERE `name` = #{text} AND brand_id = #{brandId}
+    </select>
+
+    <update id="modifyPhoto" parameterType="com.xgt.bean.bs.PhotoBean">
+        UPDATE bs_photo
+            SET
+            model = #{model},
+            `type` = #{type},
+             `name` = #{name},
+             photo_number = #{photoNumber},
+             parent_id = #{parentId},
+             description = #{description},
+             `condition` = #{condition},
+             specification = #{specification},
+             version_name = #{versionName},
+             photo_url = #{picturePathName},
+             dwg_url = #{cadPathName}
+            WHERE
+                id=#{id}
+    </update>
+
+    <select id="gainParentId" parameterType="com.xgt.bean.bs.PhotoBean" resultType="java.lang.Integer">
+        SELECT  id FROM bs_photo WHERE  `name`= #{type} AND brand_id = #{brandId}
+    </select>
+
+    <select id="gainBrandIdForParentId0" parameterType="com.xgt.bean.bs.PhotoBean" resultType="java.lang.Integer">
+        SELECT id FROM bs_brand WHERE `name` = #{text};
+    </select>
+
+    <select id="gainBrandId" parameterType="com.xgt.bean.bs.PhotoBean" resultType="java.lang.Integer">
+        SELECT id FROM bs_brand WHERE `name` = #{parentName};
+    </select>
+
+    <select id="gainBrandIdForModel" parameterType="com.xgt.bean.bs.PhotoBean" resultType="java.lang.Integer">
+        SELECT brand_id FROM bs_photo WHERE id = #{parentId}
+    </select>
+
+    <select id="gainParentIdForModel" parameterType="com.xgt.bean.bs.PhotoBean" resultType="java.lang.Integer">
+        SELECT id FROM bs_photo WHERE `name` = #{model} AND brand_id = #{brandId}
+    </select>
+</mapper>

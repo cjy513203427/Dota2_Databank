@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="financial.user">
+
+    <insert id="insertUserRole" parameterType="com.xgt.bean.UserBean">
+        INSERT INTO ct_user_role  (user_id,role_id) VALUES
+        <foreach collection="roleIds" item="roleId" index="index"
+                 separator=",">
+           (#{userId},#{roleId})
+        </foreach>
+    </insert>
+
+
+    <select id="getUserRole" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT role_id from ct_user_role where user_id=#{userId}
+    </select>
+
+    <delete id="deleteUserRole" parameterType="com.xgt.bean.UserBean">
+        DELETE  from ct_user_role where user_id=#{userId}
+    </delete>
+</mapper>

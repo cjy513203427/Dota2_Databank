@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="financial.role">
+
+    <insert id="insertRoleResource" parameterType="com.xgt.bean.RoleBean" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO ct_resource_role (role_id,resource_id) VALUES
+        <foreach collection="resourceIdList" index="index" open="" close="" item="resouce_id" separator=",">
+            (#{id},#{resouce_id})
+        </foreach>
+    </insert>
+
+    <delete id="deleteRoleResource" parameterType="com.xgt.bean.RoleBean">
+         DELETE FROM ct_resource_role WHERE role_id =#{id}
+    </delete>
+
+</mapper>

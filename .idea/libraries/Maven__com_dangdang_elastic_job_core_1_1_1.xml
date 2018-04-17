@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.dangdang:elastic-job-core:1.1.1">
+    <CLASSES>
+      <root url="jar://D:/maven/LocalWareHouse/Dota2_Databank_Repository/com/dangdang/elastic-job-core/1.1.1/elastic-job-core-1.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/maven/LocalWareHouse/Dota2_Databank_Repository/com/dangdang/elastic-job-core/1.1.1/elastic-job-core-1.1.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/maven/LocalWareHouse/Dota2_Databank_Repository/com/dangdang/elastic-job-core/1.1.1/elastic-job-core-1.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

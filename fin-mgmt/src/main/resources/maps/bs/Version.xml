@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bs.version">
+    <insert id="insertVersion" parameterType="com.xgt.bean.bs.VersionBean">
+        INSERT bs_version SET version_name = #{versionName}
+    </insert>
+
+    <select id="queryVersionInfo" resultType="com.xgt.dao.entity.bs.Version">
+        SELECT
+            bv.id,
+            bv.version_name versionName,
+            bv.create_time createTime,
+            bip.installation_package installationPackageName
+        FROM
+            bs_version bv
+        INNER JOIN bs_installation_package bip ON bv.id = bip.version_id
+        ORDER BY bip.create_time DESC LIMIT 1
+    </select>
+
+    <insert id="insertInstallationPackage" parameterType="com.xgt.bean.bs.VersionBean">
+        INSERT bs_installation_package SET installation_package = #{installationPackageName}
+        ,version_id = #{versionId}
+    </insert>
+
+    <insert id="insertSystemConfigurationFile" parameterType="com.xgt.bean.bs.VersionBean">
+        INSERT bs_system_configuration_file SET configuration_file = #{configurationFileName}
+    </insert>
+
+    <insert id="insertConfigurationFile" parameterType="com.xgt.bean.bs.VersionBean">
+        INSERT bs_configuration_file SET configuration_file = #{configurationFileName}
+        ,user_id = #{userId}
+    </insert>
+    
+    <select id="queryConfigurationFile" parameterType="com.xgt.bean.bs.VersionBean" resultType="com.xgt.dao.entity.bs.Version">
+        SELECT configuration_file configurationFileName FROM bs_configuration_file where user_id=#{userId}
+        ORDER BY create_time DESC LIMIT 1
+    </select>
+    
+    <select id="querySystemConfig" parameterType="com.xgt.bean.bs.VersionBean" resultType="com.xgt.dao.entity.bs.Version" >
+        SELECT configuration_file configurationFileName FROM bs_system_configuration_file ORDER BY create_time DESC LIMIT 1
+    </select>
+
+    <select id="gainVersionId" parameterType="com.xgt.bean.bs.VersionBean" resultType="java.lang.Integer">
+        SELECT id FROM bs_version WHERE version_name = #{versionName}
+    </select>
+
+    <!--上传封面-->
+    <insert id="insertCoverPath" parameterType="com.xgt.bean.bs.CoverBean">
+        INSERT bs_cover SET cover_path = #{coverPathName}
+    </insert>
+</mapper>

@@ -1,0 +1,80 @@
+.#{$prefix}datepanel {
+    $weekend-cell-margin: dynamic($datepanel-body-cell-margin);
+
+    .#{$prefix}datepanel-footer {
+        box-shadow: none;
+
+        .#{$prefix}button {
+            text-transform: uppercase;
+        }
+    }
+
+    .#{$prefix}datepanelview {
+        background-color: $datepanel-view-background-color;
+    }
+
+    .#{$prefix}header .#{$prefix}cell.#{$prefix}weekend {
+        &:first-child, &:last-child {
+            color: $base-color;
+        }
+
+        .#{$prefix}inner {
+            background-color: $datepanel-weekend-background-color;
+            border-top-left-radius: $datepanel-cell-border-radius;
+            border-top-right-radius: $datepanel-cell-border-radius;
+            margin-bottom: 0;
+            padding-bottom: $weekend-cell-margin;
+        }
+    }
+
+    /* We want weekend cells not to have border radius */
+    .#{$prefix}body tr .#{$prefix}cell.#{$prefix}weekend .#{$prefix}inner {
+        border-radius: 0;
+    }
+
+    .#{$prefix}body .#{$prefix}cell {
+
+        &.#{$prefix}today .#{$prefix}inner:after {
+            border-radius: $datepanel-cell-border-radius;
+        }
+
+        &.#{$prefix}special-date, &.#{$prefix}disabled-day, &.#{$prefix}selected {
+            .#{$prefix}inner:before {
+                border-radius: $datepanel-cell-border-radius;
+            }
+        }
+
+        &.#{$prefix}next-month {
+            pointer-events: none;
+
+            .#{$prefix}inner {
+                color: $datepanel-next-month-color !important;
+            }
+
+            &.#{$prefix}special-date, &.#{$prefix}disabled-day {
+                .#{$prefix}inner:before {
+                    background-color: $datepanel-next-month-background-color;
+                }
+            }
+        }
+    }
+
+    .#{$prefix}body tr:first-child .#{$prefix}cell.#{$prefix}weekend {
+        .#{$prefix}inner {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-top: $weekend-cell-margin;
+            padding-bottom: $weekend-cell-margin;
+        }
+
+        &.#{$prefix}selected .#{$prefix}inner:before {
+            margin-top: $weekend-cell-margin;
+            padding-top: 0;
+        }
+    }
+
+    .#{$prefix}body tr:last-child .#{$prefix}cell.#{$prefix}weekend .#{$prefix}inner {
+        border-bottom-left-radius: $datepanel-cell-border-radius;
+        border-bottom-right-radius: $datepanel-cell-border-radius;
+    }
+}

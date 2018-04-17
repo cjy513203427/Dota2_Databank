@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bs.excel">
+    <!--Excel导入功能-->
+    <insert id="insertPhotoFromExcel" parameterType="com.xgt.bean.bs.PhotoBean">
+        INSERT INTO bs_photo (
+            `photo_number`,
+            `specification`,
+            `condition`,
+            `brand_id`,
+            `version_name`,
+            `model`,
+            `name`,
+            `type`,
+            `parent_id`
+          )
+        VALUES
+        (
+            #{photoNumber},
+            #{specification},
+            #{condition},
+            #{brandId},
+            #{versionName},
+            #{model},
+            #{text},
+            #{type},
+            #{parentId}
+            );
+    </insert>
+
+    <select id="countPhotoNumber" parameterType="com.xgt.bean.bs.PhotoBean" resultType="java.lang.Integer">
+        SELECT
+      COUNT(1)
+        FROM
+        bs_photo bp INNER JOIN bs_brand bb ON bp.brand_id = bb.id
+        INNER JOIN bs_user_brand bub ON bp.brand_id = bub.brand_id
+    WHERE bp.`photo_number` = #{photoNumber}
+    </select>
+
+    <update id="makeHistoricalEdition" parameterType="com.xgt.bean.bs.PhotoBean">
+        UPDATE bs_photo
+        SET version_type = 0
+        WHERE
+        `photo_number` = #{photoNumber}
+        AND `brand_id` = #{brandId}
+        AND version_name &lt;= (
+        SELECT
+        a.versionName
+        FROM
+        (
+        SELECT
+        MAX(version_name) versionName
+        FROM
+        bs_photo
+        WHERE
+        photo_number = #{photoNumber}
+        ) a
+        )
+    </update>
+
+
+</mapper>

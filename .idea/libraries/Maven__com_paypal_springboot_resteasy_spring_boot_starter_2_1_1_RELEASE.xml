@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.paypal.springboot:resteasy-spring-boot-starter:2.1.1-RELEASE">
+    <CLASSES>
+      <root url="jar://D:/maven/LocalWareHouse/Dota2_Databank_Repository/com/paypal/springboot/resteasy-spring-boot-starter/2.1.1-RELEASE/resteasy-spring-boot-starter-2.1.1-RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/maven/LocalWareHouse/Dota2_Databank_Repository/com/paypal/springboot/resteasy-spring-boot-starter/2.1.1-RELEASE/resteasy-spring-boot-starter-2.1.1-RELEASE-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/maven/LocalWareHouse/Dota2_Databank_Repository/com/paypal/springboot/resteasy-spring-boot-starter/2.1.1-RELEASE/resteasy-spring-boot-starter-2.1.1-RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dota.talent">
+    <sql id="sqlWhere">
+        WHERE 1=1
+        <if test="text!=null and text!=''">
+            AND text LIKE CONCAT('%',#{text},'%')
+        </if>
+    </sql>
+    <insert id="addTalentFromDotafire" parameterType="com.xgt.bean.dota.TalentBean">
+        INSERT talent SET text = #{text},hero_id = #{heroId},grade = #{grade},`type` = #{type}
+    </insert>
+
+    <select id="getHeroIdFromHero" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT id FROM hero WHERE  SUBSTRING(`name`,15) = #{name}
+    </select>
+
+    <update id="updateHeroId" parameterType="java.lang.Integer">
+        UPDATE talent SET hero_id = #{heroId}
+    </update>
+
+    <select id="queryTalent" parameterType="com.xgt.bean.dota.TalentBean" resultType="com.xgt.dao.entity.dota.Talent">
+        SELECT id,text,hero_id heroId,grade,`type`,is_delete isDelete
+        FROM talent
+        <include refid="sqlWhere"/>
+        <include refid="common.Pagination_Limit"/>
+    </select>
+
+    <select id="countQueryTalent" parameterType="com.xgt.bean.dota.TalentBean" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM talent
+        <include refid="sqlWhere"/>
+    </select>
+</mapper>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="financial.resource">
+
+    <!-- 获取用户权限信息 -->
+    <select id="selectResourceByUserId" resultType="com.xgt.dao.entity.Resource" parameterType="map">
+         SELECT DISTINCT rs.id,rs.type,rs.name text,rs.icon iconCls,rs.url,rs.permission,rs.parent_id parentId FROM ct_resource rs
+         LEFT JOIN ct_resource_role rr ON rs.id=rr.resource_id
+         LEFT JOIN ct_user_role ur ON ur.role_id=rr.role_id
+         WHERE  ur.user_id=#{userId} AND rs.status = 1 AND rs.type=#{type}
+    </select>
+
+    <!-- 获取资源信息 -->
+    <select id="selectResource" resultType="com.xgt.dao.entity.Resource">
+        SELECT id,name text,type,parent_id parentId,permission FROM ct_resource WHERE status=1
+    </select>
+
+    <!-- 获取资源信息 -->
+    <select id="selectResourceByRole" resultType="com.xgt.dao.entity.Resource" parameterType="int">
+        SELECT r.id,r.name text,r.type,r.icon iconCls,r.parent_id parentId,r.permission
+        FROM ct_resource_role rr
+        INNER JOIN ct_resource r on r.id = rr.resource_id
+        WHERE rr.role_id = #{roleId}
+    </select>
+
+    <!-- 获取菜单资源信息 -->
+    <select id="selectMenuResource" resultType="com.xgt.dao.entity.Resource">
+        SELECT r.id,r.name text,r.type,r.icon iconCls,r.parent_id parentId,r.permission, r.url, r.status
+        FROM ct_resource r WHERE r.type='menu'
+    </select>
+
+    <!-- 获取资源点资源信息 -->
+    <select id="selectButtonResource" resultType="com.xgt.dao.entity.Resource" parameterType="int">
+        SELECT r.id,r.name text,r.type,r.icon iconCls,r.parent_id parentId,r.permission, r.status
+        FROM ct_resource r WHERE r.parent_id= #{resourceId} AND r.type ='button'
+    </select>
+
+    <insert id="insertResource" parameterType="com.xgt.dao.entity.Resource" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO ct_resource
+        SET `name`=#{text}
+        <if test="type!=null">, `type`=#{type}</if>
+        <if test="iconCls!=null">, icon=#{iconCls}</if>
+        <if test="parentId!=null">, parent_id=#{parentId}</if>
+        <if test="permission!=null">, permission=#{permission}</if>
+        <if test="url!=null">, url=#{url}</if>
+        <if test="status!=null">, status=#{status}</if>
+    </insert>
+
+    <update id="updateResource" parameterType="com.xgt.dao.entity.Resource">
+        UPDATE ct_resource r
+        <trim prefix="set" suffixOverrides=",">
+            <if test="text!=null">r.name = #{text},</if>
+            <if test="type!=null">r.type = #{type},</if>
+            <if test="iconCls!=null">r.icon = #{iconCls},</if>
+            <if test="parentId!=null">r.parent_id = #{parentId},</if>
+            <if test="permission!=null">r.permission = #{permission},</if>
+            <if test="url!=null">r.url = #{url},</if>
+            <if test="status!=null">r.status = #{status}</if>
+        </trim>
+        WHERE r.id = #{id}
+    </update>
+
+    <delete id="deleteResource">
+         DELETE FROM ct_resource WHERE id = #{id}
+    </delete>
+
+
+</mapper>

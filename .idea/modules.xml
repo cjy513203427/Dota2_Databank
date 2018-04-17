@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Dota2_Databank.iml" filepath="$PROJECT_DIR$/Dota2_Databank.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fin-mgmt/fin-mgmt.iml" filepath="$PROJECT_DIR$/fin-mgmt/fin-mgmt.iml" />
+    </modules>
+  </component>
+</project>

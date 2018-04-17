@@ -1,0 +1,9 @@
+/**
+ * @class Ext.grid.cell.Expander
+ */
+
+$expandercell-icon-color: dynamic($base-color);
+$expandercell-icon-size: dynamic(16px);
+$expandercell-icon-size-big: dynamic(24px);
+$expandercell-expand-icon: dynamic($ios-row-expander-expand iOS);
+$expandercell-collapse-icon: dynamic($ios-row-expander-collapse iOS);

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bs.userBrand">
+
+    <insert id="insertUserBrand" parameterType="com.xgt.bean.bs.BrandBean">
+        INSERT INTO bs_user_brand  (user_id,brand_id) VALUES
+        <foreach collection="brandIds" item="brandId" index="index"
+                 separator=",">
+            (#{userId},#{brandId})
+        </foreach>
+    </insert>
+
+    <insert id="insertUserBrandDefalt" parameterType="com.xgt.bean.bs.BrandBean">
+        INSERT INTO bs_user_brand  (user_id,brand_id) VALUES
+            (#{userId},#{brandId})
+    </insert>
+
+
+    <select id="getUserBrand" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT brand_id from bs_user_brand where user_id=#{userId}
+    </select>
+
+    <delete id="deleteUserBrand" parameterType="com.xgt.bean.bs.BrandBean">
+        DELETE  from bs_user_brand where user_id=#{userId}
+    </delete>
+</mapper>

@@ -1,0 +1,10 @@
+.#{$prefix}tool {
+    display: flex;
+    outline: none;
+    align-items: center;
+    justify-content: center;
+
+    .#{$prefix}icon-el {
+        flex: 1;
+    }
+}

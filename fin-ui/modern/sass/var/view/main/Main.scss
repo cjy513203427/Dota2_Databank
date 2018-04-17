@@ -1,0 +1,43 @@
+$circle-border-radius:50%;
+$base-border-color: #ddd;
+$lightest-color:#fff;
+$font-weight-normal: 400;
+$font-weight-bold: 500;
+
+$accordion-header-background-color: $lightest-color;
+$accordion-header-color: #333;
+
+$social-facebook-btn-background: #167abc;
+$social-twitter-btn-background: #03b4d5;
+$social-google-plus-btn-background: #e44959;
+$social-envelope-btn-background: #7754aa;
+
+$treelist-nav-ui: (
+    padding: 0 10px,
+    background-color: $panel-navigation-background-color,
+    toolstrip-background-color: #32404e,
+    tool-float-indicator-color: $base-color,
+    tool-float-indicator-width: 5px,
+    tool-indicator-selected-color: $base-color,
+    tool-indicator-selected-width: 5px,
+    tool-selected-background-color: mix(white, $panel-navigation-background-color, 10%),
+    item-expanded-background-color: #2c3845,
+    item-line-height: $panel-navigation-item-line-height,
+    row-over-background-color: mix(white, $panel-navigation-background-color, 5%),
+    row-selected-background-color: mix(white, $panel-navigation-background-color, 10%),
+    item-icon-color: $panel-navigation-item-text-color,
+    item-expander-color: #fff,
+    item-text-color: #ADB3B8,
+    item-icon-over-color: #fff,
+    item-expander-over-color: #fff,
+    item-text-over-color: mix(white, $panel-navigation-item-text-color, 50%),
+    item-text-font-size: 14px,
+    item-icon-font-size: 18px,
+    item-icon-width: 44px,
+    item-expander-font-size: 16px,
+    item-expander-width: 24px,
+    row-indicator-width: 5px,
+    row-indicator-selected-color: $base-color,
+    row-indicator-selected-over-color: lighten($base-color, 7%),
+    row-indicator-over-color: transparent
+);

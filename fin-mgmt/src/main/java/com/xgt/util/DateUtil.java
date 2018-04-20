@@ -187,8 +187,9 @@ public class DateUtil {
 
     public static void main(String[] args) throws ParseException {
         /*System.out.println(DateUtil.diffDay(new Date(), DateUtils.parseDate("2016-08-25 23:00:00", "yyyy-MM-dd HH:mm:ss")));
-        System.out.println("time=="+DateUtil.getCurrentTime());*/
-        System.out.println(getWeekTimeList(new Date()));
+        System.out.println("time=="+DateUtil.getCurrentTime());
+        System.out.println(getWeekTimeList(new Date()));*/
+        System.out.println(TimeStamp2Date("1524055246"));
     }
 
     /**
@@ -243,5 +244,12 @@ public class DateUtil {
         cal.roll(Calendar.DATE, -1);
         Date endTime = cal.getTime();
         return datef.format(endTime) + " 23:59:59";
+    }
+
+    //Convert Unix timestamp to normal date style
+    public static String TimeStamp2Date(String timestampString){
+        Long timestamp = Long.parseLong(timestampString)*1000;
+        String date = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date(timestamp));
+        return date;
     }
 }

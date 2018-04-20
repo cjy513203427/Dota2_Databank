@@ -1,6 +1,7 @@
 package com.xgt.task;
 
 import com.xgt.bean.dota.ItemBean;
+import com.xgt.common.BaseController;
 import com.xgt.dao.entity.dota.Item;
 import com.xgt.dao.entity.dota.LinkTypeData;
 import com.xgt.dao.entity.dota.Rule;
@@ -23,13 +24,13 @@ import java.util.List;
 @Component//当组件不好归类的时候，我们可以使用这个注解进行标注。
 @Configurable//自动注入bean
 @EnableScheduling//开启计划任务的支持。
-public class ItemTask {
+public class ItemTask extends BaseController{
     @Autowired
     private ItemService itemService;
     //@Scheduled(cron = "0/5 * * * * ?")//每5秒执行
     @Scheduled(cron = "0 0 0 * * ?")//每天零点执行
     private void addGameItemFromSteamAPI() throws IOException {
-        String jsonArray = URLUtil.getUrlForItem("https://api.steampowered.com/IEconDOTA2_570/GetGameItems/v1/?key=B914590BCC453C590109B381504042A7&language=Chinese");
+        String jsonArray = URLUtil.getUrlForItem("https://api.steampowered.com/IEconDOTA2_570/GetGameItems/v1/?key="+steamKey+"&language=Chinese");
         List<Item> items = GsonUtil.getObjectList(jsonArray,Item.class);
         for (Item item:items){
             ItemBean itemBean = new ItemBean();

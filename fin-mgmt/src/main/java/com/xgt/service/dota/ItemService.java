@@ -69,4 +69,13 @@ public class ItemService {
         map.put("list",list);
         return map;
     }
+
+    public Map<String,Object> getItemById(Integer itemId){
+        Integer total;
+        List<Item> list = null;
+        Map<String,Object> map = new HashedMap();
+        list=itemDao.getItemById(itemId);
+        map.put("list",list);
+        return map;
+    }
 }

@@ -1,6 +1,7 @@
 package com.xgt.task;
 
 import com.xgt.bean.dota.HeroBean;
+import com.xgt.common.BaseController;
 import com.xgt.dao.entity.dota.Hero;
 import com.xgt.dao.entity.dota.LinkTypeData;
 import com.xgt.dao.entity.dota.Rule;
@@ -23,13 +24,13 @@ import java.util.List;
 @Component//当组件不好归类的时候，我们可以使用这个注解进行标注。
 @Configurable//自动注入bean
 @EnableScheduling//开启计划任务的支持。
-public class HeroTask {
+public class HeroTask extends BaseController{
     @Autowired
     private HeroService heroService;
     //@Scheduled(cron = "0/5 * * * * ?")//每5秒执行
-    @Scheduled(cron = "0 0 0 * * ?")//每天零点执行
+    //@Scheduled(cron = "0 0 0 * * ?")//每天零点执行
     private void addHeroFromSteamAPI() throws IOException {
-        String jsonArray = URLUtil.getUrlForHero("https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v1/?key=B914590BCC453C590109B381504042A7&format=json&language=Chinese");
+        String jsonArray = URLUtil.getUrlForHero("https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v1/?key="+steamKey+"&format=json&language=Chinese");
         List<Hero> heroes = GsonUtil.getObjectList(jsonArray,Hero.class);
         for (Hero hero:heroes){
             HeroBean heroBean = new HeroBean();
@@ -44,7 +45,7 @@ public class HeroTask {
     @Autowired
     private ExtractService extractService;
     //@Scheduled(cron = "0/5 * * * * ?")//每5秒执行
-    @Scheduled(cron = "0 0 1 * * ?")//每天一点执行
+    //@Scheduled(cron = "0 0 1 * * ?")//每天一点执行
     private void addHeroIconFromDOTA2OfficalWebsite() throws IOException {
         Rule rule = new Rule("http://www.dota2.com.cn/heroes/index.htm",
                 new String[] { }, new String[] {  },

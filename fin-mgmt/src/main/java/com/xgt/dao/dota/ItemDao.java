@@ -49,4 +49,8 @@ public class ItemDao {
     public List<Item> queryItemFather(Integer itemId){
         return sqlSession.selectList("dota.item.queryItemFather",itemId);
     }
+
+    public List<Item> getItemById(Integer itemId){
+        return sqlSession.selectList("dota.item.getItemById",itemId);
+    }
 }

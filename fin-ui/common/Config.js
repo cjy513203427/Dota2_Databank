@@ -145,6 +145,10 @@ Ext.define('Common.Config', {
             },
             Talent:{
                 queryTalent:'talent/queryTalent'
+            },
+            Match:{
+                getMatchHistory:'match/getMatchHistory',
+                getMatchDetail:'match/getMatchDetail'
             }
 
         },

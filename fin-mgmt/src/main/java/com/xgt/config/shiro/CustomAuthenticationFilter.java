@@ -74,7 +74,7 @@ public class CustomAuthenticationFilter extends FormAuthenticationFilter {
             ||noUrl.indexOf("photo/")>0||noUrl.indexOf("picturetype/")>0||noUrl.indexOf("picturelocal/")>0|| noUrl.indexOf("cadlocal/")>0
             ||noUrl.indexOf("bsVersionApi/")>0||noUrl.indexOf("excelserver/")>0||noUrl.indexOf("pictureserver/")>0||noUrl.indexOf("cadserver/")>0
             ||noUrl.indexOf("installationPackageServerApi/")>0||noUrl.indexOf("configurationFileServerApi/")>0||noUrl.indexOf("configurationFileServer/")>0
-            ||noUrl.indexOf("coverServer/")>0||noUrl.indexOf("hero/")>0||noUrl.indexOf("item/")>0||noUrl.indexOf("talent/")>0){
+            ||noUrl.indexOf("coverServer/")>0||noUrl.indexOf("hero/")>0||noUrl.indexOf("item/")>0||noUrl.indexOf("talent/")>0||noUrl.indexOf("match/")>0){
                 dispatcher = request.getRequestDispatcher(noUrl);
             }else{
                 myRequest.getExchange().setRequestMethod(HttpString.tryFromString("GET"));

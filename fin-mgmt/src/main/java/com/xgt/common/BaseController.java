@@ -37,6 +37,8 @@ public class BaseController {
     @Value("${aliyunOSS.imageAddress}")
     protected String imageAddress;
 
+    @Value("${steam.key}")
+    protected String steamKey;
     /**
      * Generate new PcsResult object, default with "SUCCESS" code.
      *

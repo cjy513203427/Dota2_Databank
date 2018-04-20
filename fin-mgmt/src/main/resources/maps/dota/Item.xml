@@ -63,4 +63,14 @@
         WHERE
             ic.compound_item_id = #{itemId} AND i.id = ic.item_id
     </select>
+
+    <select id="getItemById" parameterType="Integer" resultType="com.xgt.dao.entity.dota.Item">
+        SELECT
+            chinese_name chineseName,
+            item_path itemPath
+        FROM
+            item
+        WHERE
+            id = #{id}
+    </select>
 </mapper>

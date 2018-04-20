@@ -82,4 +82,17 @@ public class ItemController extends BaseController{
             return newResult(true).setData(map);
         }
     }
+
+    @GET
+    @Path("getItemById")
+    @Produces(MediaType.APPLICATION_JSON)
+    //@RequiresPermissions(value="item:getItemById")
+    public PcsResult getItemById(@QueryParam("itemId") Integer itemId){
+        Map map = itemService.getItemById(itemId);
+        if(map.size()==0){
+            return newResult(false).setCode(EnumPcsServiceError.ERROR_OPERATE.getCode()).setMessage(EnumPcsServiceError.ERROR_OPERATE.getDesc());
+        }else {
+            return newResult(true).setData(map);
+        }
+    }
 }

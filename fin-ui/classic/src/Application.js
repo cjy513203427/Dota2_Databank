@@ -51,7 +51,10 @@ Ext.define('Admin.Application', {
         /*物品管理*/
         'item.Item',
         /*天赋管理*/
-        'talent.Talent'
+        'talent.Talent',
+        /*战绩信息*/
+        'matchHistory.MatchHistory',
+        'matchDetail.MatchDetail'
     ],
 
     // defaultToken : 'dashboard',

@@ -40,6 +40,7 @@ Ext.define('Admin.view.matchHistory.MatchHistoryController', {
                 return true;
             }
         });
+        //console.log(grid.getStore())
         grid.getStore().reload();
     },
 
@@ -76,6 +77,39 @@ Ext.define('Admin.view.matchHistory.MatchHistoryController', {
      */
     reset: function () {
         this.lookupReference('form').reset();
+    },
+
+    /**
+     * 选择一场比赛 加载 比赛的详细信息
+     */
+    dblclickSelected: function(dataview, record, item, index, e) {
+        var me = this, gridDetail = me.lookupReference('gridDetail');
+        if (record.match_id !== 0) {
+            gridDetail.getStore().load({
+                params: {
+                    match_id: record.get('match_id')
+                }
+            });
+        } else {
+            gridDetail.getStore().removeAll();
+        }
+    },
+
+    dblclickWindow: function(chart, item, event, eOpt) {
+        var rec = item;
+        /**
+         * 描述，在window上添加其他的组件，并且对组件进行相关的操作
+         */
+        Ext.create('Admin.view.players.Players', {
+            viewModel: {
+                links: {
+                    thePlayers: {
+                        type: 'players.Players',
+                        create: rec.data
+                    }
+                }
+            }
+        }).show();
     }
 
 });

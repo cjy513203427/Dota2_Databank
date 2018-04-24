@@ -2,6 +2,7 @@ package com.xgt.dao.entity.dota;
 
 /**
  * Created by hasee on 2018/4/18.
+ * Player for MatchHistory
  */
 public class Player {
     //Dota2 Steam id

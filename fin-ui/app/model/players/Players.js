@@ -1,0 +1,45 @@
+/**
+ * Created by hasee on 2018/4/21.
+ */
+Ext.define('Admin.model.players.Players', {
+    extend: 'Admin.model.Base',
+    idProperty: 'account_id',
+    fields: [
+        {name: 'account_id', type: 'int'},
+        {name: 'player_slot', type: 'int'},
+        {name: 'hero_id', type: 'int'},
+        {name: 'item_0', type: 'int'},
+        {name: 'item_1', type: 'int'},
+        {name: 'item_2', type: 'int'},
+        {name: 'item_3', type: 'int'},
+        {name: 'item_4', type: 'int'},
+        {name: 'item_5', type: 'int'},
+        {name: 'itemPath0', type: 'string'},
+        {name: 'itemPath1', type: 'string'},
+        {name: 'itemPath2', type: 'string'},
+        {name: 'itemPath3', type: 'string'},
+        {name: 'itemPath4', type: 'string'},
+        {name: 'itemPath5', type: 'string'},
+        {name: 'backpack_0', type: 'int'},
+        {name: 'backpack_1', type: 'int'},
+        {name: 'backpack_2', type: 'int'},
+        {name: 'kills', type: 'int'},
+        {name: 'deaths', type: 'int'},
+        {name: 'assists', type: 'int'},
+        {name: 'leaver_status', type: 'int'},
+        {name: 'last_hits', type: 'int'},
+        {name: 'denies', type: 'int'},
+        {name: 'gold_per_min', type: 'int'},
+        {name: 'xp_per_min', type: 'int'},
+        {name: 'level', type: 'int'},
+        {name: 'hero_damage', type: 'int'},
+        {name: 'tower_damage', type: 'int'},
+        {name: 'hero_healing', type: 'int'},
+        {name: 'gold', type: 'int'},
+        {name: 'gold_spent', type: 'int'},
+        {name: 'scaled_hero_damage', type: 'int'},
+        {name: 'scaled_tower_damage', type: 'int'},
+        {name: 'scaled_hero_healing', type: 'int'},
+
+    ]
+});

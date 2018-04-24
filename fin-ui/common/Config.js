@@ -141,14 +141,16 @@ Ext.define('Common.Config', {
                 queryHero:'hero/queryHero'
             },
             Item:{
-                queryItem:'item/queryItem'
+                queryItem:'item/queryItem',
+                getItemById:'item/getItemById'
             },
             Talent:{
                 queryTalent:'talent/queryTalent'
             },
             Match:{
                 getMatchHistory:'match/getMatchHistory',
-                getMatchDetail:'match/getMatchDetail'
+                getMatchDetail:'match/getMatchDetail',
+                getMatchDetailPlayers:'match/getMatchDetailPlayers'
             }
 
         },

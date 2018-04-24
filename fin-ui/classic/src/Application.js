@@ -54,7 +54,8 @@ Ext.define('Admin.Application', {
         'talent.Talent',
         /*战绩信息*/
         'matchHistory.MatchHistory',
-        'matchDetail.MatchDetail'
+        'matchDetail.MatchDetail',
+        'players.Players'
     ],
 
     // defaultToken : 'dashboard',

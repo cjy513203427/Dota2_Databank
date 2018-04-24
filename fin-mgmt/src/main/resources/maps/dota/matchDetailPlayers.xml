@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dota.matchDetailPlayers">
+    <insert id="importMatchDetailPlayersFromSteamAPI" parameterType="com.xgt.bean.dota.PlayersBean">
+        INSERT match_detail_players SET account_id = #{account_id},player_slot=#{player_slot},hero_id = #{hero_id},item_0 = #{item_0},
+        item_1 = #{item_1},item_2 = #{item_2},item_3 = #{item_3},item_4 = #{item_4},item_5 = #{item_5},backpack_0
+        =#{backpack_0},backpack_1=#{backpack_1},backpack_2=#{backpack_2},kills=#{kills},deaths=#{deaths},assists=#{assists},
+        leaver_status=#{leaver_status},last_hits=#{last_hits},denies=#{denies},gold_per_min=#{gold_per_min},xp_per_min=#{xp_per_min},
+        level=#{level},hero_damage=#{hero_damage},tower_damage=#{tower_damage},hero_healing=#{hero_healing},gold=#{gold},
+        gold_spent=#{gold_spent},scaled_hero_damage=#{scaled_hero_damage},scaled_tower_damage=#{scaled_tower_damage},
+        scaled_hero_healing=#{scaled_hero_healing},match_id=#{match_id}
+    </insert>
+
+    <select id="ifMatchIdExists" parameterType="java.lang.Long" resultType="java.lang.Integer">
+        SELECT count(1) FROM match_detail_players WHERE match_id=#{match_id}
+    </select>
+
+    <select id="queryMatchDetailPlayers" parameterType="java.lang.Long" resultType="com.xgt.dao.entity.dota.Players">
+        select result.account_id,result.player_slot,result.kills,result.deaths,result.assists,result.leaver_status,
+        result.last_hits,result.denies,result.gold_per_min,result.xp_per_min,result.`level`
+        ,result.hero_damage,result.tower_damage,result.hero_healing,result.gold,result.gold_spent,
+        result.scaled_hero_damage,result.scaled_tower_damage,result.scaled_hero_healing,
+        heroId.hero_path heroPath,item0.item_path itemPath0,item1.item_path itemPath1,item2.item_path itemPath2,
+        item3.item_path itemPath3,item4.item_path itemPath4,item5.item_path itemPath5 from
+        (SELECT match_detail_players.id,item_path from match_detail_players,item where match_detail_players.item_0=item.id)item0,
+        (SELECT match_detail_players.id,item_path from match_detail_players,item where match_detail_players.item_1=item.id)item1,
+        (SELECT match_detail_players.id,item_path from match_detail_players,item where match_detail_players.item_2=item.id)item2,
+        (SELECT match_detail_players.id,item_path from match_detail_players,item where match_detail_players.item_3=item.id)item3,
+        (SELECT match_detail_players.id,item_path from match_detail_players,item where match_detail_players.item_4=item.id)item4,
+        (SELECT match_detail_players.id,item_path from match_detail_players,item where match_detail_players.item_5=item.id)item5,
+        (SELECT match_detail_players.id,hero_path from match_detail_players,hero where match_detail_players.hero_id=hero.id)heroId,
+        ( SELECT id,account_id,player_slot,kills,deaths,assists,leaver_status,last_hits,denies,gold_per_min,xp_per_min,level,hero_damage,tower_damage,
+          hero_healing,gold,gold_spent,scaled_hero_damage,scaled_tower_damage,scaled_hero_healing,match_id from match_detail_players)result
+        where item0.id=item1.id AND item0.id=item2.id AND item0.id=item3.id AND item0.id=item4.id
+        AND item0.id=item5.id AND item0.id=heroId.id AND item0.id=result.id AND result.match_id = #{match_id}
+    </select>
+</mapper>

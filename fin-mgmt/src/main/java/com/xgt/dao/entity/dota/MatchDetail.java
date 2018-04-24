@@ -8,7 +8,7 @@ import java.util.List;
  * Created by hasee on 2018/4/19.
  */
 public class MatchDetail {
-    List<Player> players;
+    List<Players> players;
     //Dictates the winner of the match, true for radiant; false for dire.
     private Boolean radiant_win;
     //The length of the match, in seconds since the match began.
@@ -67,7 +67,7 @@ public class MatchDetail {
     //The server cluster the match was played upon. Used for downloading replays of matches.
     private Integer cluster;
     //The time in seconds since the match began when first-blood occurred.
-    private Integer first_blood_time;
+    private Long first_blood_time;
     /**
      *
      0 - Public matchmaking
@@ -127,11 +127,11 @@ public class MatchDetail {
 
     private Integer dire_score;
 
-    public List<Player> getPlayers() {
+    public List<Players> getPlayers() {
         return players;
     }
 
-    public void setPlayers(List<Player> players) {
+    public void setPlayers(List<Players> players) {
         this.players = players;
     }
 
@@ -223,11 +223,11 @@ public class MatchDetail {
         this.cluster = cluster;
     }
 
-    public Integer getFirst_blood_time() {
+    public Long getFirst_blood_time() {
         return first_blood_time;
     }
 
-    public void setFirst_blood_time(Integer first_blood_time) {
+    public void setFirst_blood_time(Long first_blood_time) {
         this.first_blood_time = first_blood_time;
     }
 

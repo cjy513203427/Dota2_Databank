@@ -99,4 +99,26 @@ public class URLUtil {
         //JSONArray jsonArray = JSONArray.fromObject(result);
         return result;
     }
+
+    public static String getUrlForMatchDetailPlayers(String strURL) throws IOException {
+        URL url = new URL(strURL);
+        HttpURLConnection httpConn = (HttpURLConnection)
+                url.openConnection();
+        httpConn.setRequestMethod("GET");
+        httpConn.connect();
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(
+                httpConn.getInputStream()));
+        String line;
+        StringBuffer buffer = new StringBuffer();
+        while ((line = reader.readLine()) != null) {
+            buffer.append(line);
+        }
+        reader.close();
+        httpConn.disconnect();
+
+        String result = new String(buffer.substring(21,buffer.lastIndexOf("]")+1));
+        //JSONArray jsonArray = JSONArray.fromObject(result);
+        return result;
+    }
 }

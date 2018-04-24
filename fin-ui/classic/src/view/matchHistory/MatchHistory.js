@@ -125,7 +125,8 @@ Ext.define('Admin.view.matchHistory.MatchHistory', {
         }],
         listeners: {
             beforerender: 'gridBeforeRender',
-            render: 'search'
+            render: 'search',
+            itemdblclick: 'dblclickSelected'
         }
     },{
         xtype: 'grid',
@@ -140,11 +141,6 @@ Ext.define('Admin.view.matchHistory.MatchHistory', {
         },
 
         columns: [{
-            text: "Company",
-            dataIndex: 'name',
-
-            flex: 1
-        }, {
             text: "天辉方赢",
             dataIndex: 'radiant_win'
         }, {
@@ -208,7 +204,7 @@ Ext.define('Admin.view.matchHistory.MatchHistory', {
         }],
         listeners: {
             beforerender: 'gridBeforeRenderDetail',
-            //render: 'search'
+            itemdblclick: 'dblclickWindow'
         }
     }]
 });

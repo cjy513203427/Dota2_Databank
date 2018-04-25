@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+
+    <style>
+    </style>
+</head>
+
+<body>
+    <div style="border: 1px solid black;width:1000px;height:2557px;margin-left:auto;margin-right:auto;">
+        <div style="border: 1px solid gold;width: 534px;height: 2557px;float: left;">
+            <table align="center" width="500" height="900" border=1 bordercolor="#00ff99" id="heroModel">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div style="border: 1px solid red;width: 460px;height: 900px;float: right;">
+            <table align="left" width="230" height="900" border=1 bordercolor="#00ff99" id="talent1">
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+            </table>
+            <table align="right" width="230" height="900" border=1 bordercolor="red" id="talent2">
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    $.ajax({
+        type: 'GET',
+        url: "http://127.0.0.1:8004/rest/hero/queryHero",
+        data: {
+            // itemPath: "itemPath"
+        },
+        success: function (data) {
+            var datas = data.data;
+            $('#heroModel tr:not([class])').each(function (i) {                   // 遍历 tr
+                $(this).children('td').each(function (j) {  // 遍历 tr 的各个 td
+                    //console.log("第" + (i + 1) + "行，第" + (j + 1) + "个td的值：" + $(this).text() + "。");
+                    for (var k = 0; k < data.data.list.length; k++) {
+                        if (k >= 5 * i && k < 5 * (i + 1)) {
+                            if (k % 5 == (j + 1)) {
+                                var id = "<p style='display:none'>" + data.data.list[k].id + "</p>";
+                                $(this).html(id + "<img src='" + data.data.list[k].heroPath + "' height='100' width='100'>")
+                                return true;
+                            } else if (k % 5 == 0) {
+                                var id = "<p style='display:none'>" + data.data.list[k].id + "</p>";
+                                $(this).html(id + "<img src='" + data.data.list[k].heroPath + "' height='100' width='100'>")
+                            }
+                        }
+                    }
+                })
+            })
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
+        },
+        dataType: "json"
+    });
+
+    //获取英雄id的点击事件
+    $("#heroModel tr td").click(function () {    //td点击事件；
+        var val = $(this).children("p").html();  //定义val值为点击的此td的id值；
+        //console.log(val);
+        $.ajax({
+            type: 'GET',
+            url: "http://127.0.0.1:8004/rest/talent/getTalentByHeroId",
+            data: {
+                heroId: val
+            },
+            success: function (data) {
+                var datas = data.data;
+                for (var k = 0; k < data.data.list.length; k++) {
+                    if (datas.list[k].type == 1) {
+                        $('#talent1 tr:not([class])').each(function (i) {                   // 遍历 tr
+                            $(this).children('td').each(function (j) {  // 遍历 tr 的各个 td
+                                //console.log(k+"比较"+i)
+                                if (k == 2*i) {
+                                    $(this).html("<p style='display:block'>" + data.data.list[k].chineseName + "</p>");
+                                }
+                            })
+                        })
+                    } else if (datas.list[k].type == 2) {
+                        $('#talent2 tr:not([class])').each(function (i) {                   // 遍历 tr
+                            $(this).children('td').each(function (j) {  // 遍历 tr 的各个 td
+                                //console.log(k+"比较"+i)
+                                if (k == 2*i+1) {
+                                    $(this).html("<p style='display:block'>" + data.data.list[k].chineseName + "</p>");
+                                }
+                            })
+                        })
+                    }
+                }
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert(XMLHttpRequest.status);
+                alert(XMLHttpRequest.readyState);
+                alert(textStatus);
+            },
+            dataType: "json"
+        })
+    })
+
+
+</script>
+
+</html>

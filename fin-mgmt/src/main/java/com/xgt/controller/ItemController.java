@@ -6,6 +6,7 @@ import com.xgt.common.PcsResult;
 import com.xgt.dao.entity.dota.Item;
 import com.xgt.exception.EnumPcsServiceError;
 import com.xgt.service.dota.ItemService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.jboss.resteasy.annotations.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -95,6 +96,8 @@ public class ItemController extends BaseController{
             return newResult(true).setData(map);
         }
     }
+
+
 
 
 }

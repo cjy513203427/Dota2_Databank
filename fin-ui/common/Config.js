@@ -138,7 +138,8 @@ Ext.define('Common.Config', {
                 uploadCover:'coverServer/uploadCover'
             },
             Hero:{
-                queryHero:'hero/queryHero'
+                queryHero:'hero/queryHero',
+                modifyHero:'hero/modifyHero'
             },
             Item:{
                 queryItem:'item/queryItem',

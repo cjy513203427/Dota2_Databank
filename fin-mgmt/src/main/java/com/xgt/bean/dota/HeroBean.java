@@ -2,6 +2,7 @@ package com.xgt.bean.dota;
 
 import com.xgt.generic.PageQueryEntity;
 
+import javax.ws.rs.FormParam;
 import javax.ws.rs.QueryParam;
 
 /**

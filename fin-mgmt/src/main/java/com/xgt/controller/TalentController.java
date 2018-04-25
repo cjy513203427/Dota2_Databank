@@ -5,6 +5,7 @@ import com.xgt.common.BaseController;
 import com.xgt.common.PcsResult;
 import com.xgt.exception.EnumPcsServiceError;
 import com.xgt.service.dota.TalentService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.jboss.resteasy.annotations.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import java.util.Map;
 
@@ -31,9 +33,22 @@ public class TalentController extends BaseController{
     @GET
     @Path("queryTalent")
     @Produces(MediaType.APPLICATION_JSON)
-    //@RequiresPermissions(value="hero:queryHero")
+    //@RequiresPermissions(value="talent:queryTalent")
     public PcsResult queryTalent(@Query TalentBean talentBean){
         Map map = talentService.queryTalent(talentBean);
+        if(map.size()==0){
+            return newResult(false).setCode(EnumPcsServiceError.ERROR_OPERATE.getCode()).setMessage(EnumPcsServiceError.ERROR_OPERATE.getDesc());
+        }else {
+            return newResult(true).setData(map);
+        }
+    }
+
+    @GET
+    @Path("getTalentByHeroId")
+    @Produces(MediaType.APPLICATION_JSON)
+    //@RequiresPermissions(value="hero:getTalentByHeroId")
+    public PcsResult getTalentByHeroId(@QueryParam("heroId") Integer heroId){
+        Map map = talentService.getTalentByHeroId(heroId);
         if(map.size()==0){
             return newResult(false).setCode(EnumPcsServiceError.ERROR_OPERATE.getCode()).setMessage(EnumPcsServiceError.ERROR_OPERATE.getDesc());
         }else {

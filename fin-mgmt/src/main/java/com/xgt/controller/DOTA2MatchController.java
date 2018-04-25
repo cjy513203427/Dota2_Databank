@@ -10,6 +10,7 @@ import com.xgt.util.DateUtil;
 import com.xgt.util.GsonUtil;
 import com.xgt.util.URLUtil;
 import org.apache.commons.collections.map.HashedMap;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -35,7 +36,7 @@ public class DOTA2MatchController extends BaseController{
     @GET
     @Path("getMatchHistory")
     @Produces(MediaType.APPLICATION_JSON)
-    //@RequiresPermissions(value="match:getMatchHistory")
+    @RequiresPermissions(value="match:getMatchHistory")
     public Map<String,Object> getMatchHistory(@QueryParam("account_id") Long account_id) throws IOException {
         Map<String,Object> modelMap = new HashMap<String,Object>();
         String jsonArray = "";
@@ -61,7 +62,7 @@ public class DOTA2MatchController extends BaseController{
     @GET
     @Path("getMatchDetail")
     @Produces(MediaType.APPLICATION_JSON)
-    //@RequiresPermissions(value="match:getMatchDetails")
+    @RequiresPermissions(value="match:getMatchDetails")
     public Map<String,Object> getMatchDetails(@QueryParam("match_id") Long match_id) throws IOException {
         Map<String,Object> modelMap = new HashMap<String,Object>();
         String jsonArray = "";
@@ -87,7 +88,7 @@ public class DOTA2MatchController extends BaseController{
     @GET
     @Path("getMatchDetailPlayers")
     @Produces(MediaType.APPLICATION_JSON)
-    //@RequiresPermissions(value="match:getMatchDetailPlayers")
+    @RequiresPermissions(value="match:getMatchDetailPlayers")
     public Map<String,Object> getMatchDetailPlayers(@QueryParam("match_id") Long match_id) throws IOException {
         Map<String,Object> modelMap = new HashMap<String,Object>();
         String jsonArray = URLUtil.getUrlForMatchDetailPlayers("https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/v1/?key=" + steamKey + "&match_id=" + match_id);

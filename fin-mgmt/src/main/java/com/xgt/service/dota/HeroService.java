@@ -46,4 +46,8 @@ public class HeroService {
         map.put("total",total);
         return map;
     }
+
+    public void modifyHero(HeroBean heroBean){
+        heroDao.modifyHero(heroBean);
+    }
 }

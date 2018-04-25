@@ -14,6 +14,8 @@ public class Hero {
 
     private String heroPath;
 
+    private String chineseName;
+
     public Integer getId() {
         return id;
     }
@@ -52,5 +54,13 @@ public class Hero {
 
     public void setHeroPath(String heroPath) {
         this.heroPath = heroPath;
+    }
+
+    public String getChineseName() {
+        return chineseName;
+    }
+
+    public void setChineseName(String chineseName) {
+        this.chineseName = chineseName;
     }
 }

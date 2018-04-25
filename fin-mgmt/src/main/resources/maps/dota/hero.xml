@@ -35,4 +35,8 @@
         SELECT COUNT(1) FROM hero
         <include refid="sqlWhere"/>
     </select>
+
+    <update id="modifyHero" parameterType="com.xgt.bean.dota.HeroBean">
+        UPDATE hero SET localized_name = #{localizedName} WHERE id = #{id}
+    </update>
 </mapper>

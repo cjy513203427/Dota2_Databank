@@ -44,6 +44,12 @@ public class SimpleCORSFilter implements Filter {
             response.setHeader("Access-Control-Max-Age", "3600");
             response.setHeader("Access-Control-Allow-Headers", "content-type, x-requested-with");
             response.setHeader("Access-Control-Allow-Credentials", "true");
+        }else if("http://127.0.0.1:8889".equals(originHeader)){
+            response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:8889");
+            response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+            response.setHeader("Access-Control-Max-Age", "3600");
+            response.setHeader("Access-Control-Allow-Headers", "content-type, x-requested-with");
+            response.setHeader("Access-Control-Allow-Credentials", "true");
         }else if(originHeader==null){
             chain.doFilter(req,res);
         }

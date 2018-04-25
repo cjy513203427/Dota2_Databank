@@ -10,7 +10,7 @@ Ext.define('Admin.view.hero.Hero', {
         'Ext.button.Button',
         'Ext.form.field.Date'
     ],
-    controller: "brand",
+    controller: "hero",
     layout: {
         type: 'vbox',
         align: 'stretch'
@@ -105,7 +105,18 @@ Ext.define('Admin.view.hero.Hero', {
             text: '操作',
             xtype: 'actioncolumn',
             width: 100,
-            items: []
+            items: [{
+                tooltip: '编辑',
+                icon: 'resources/images/icons/ic_edit.png',
+                handler: 'modifyHero',
+                columnWidth :25,
+                isDisabled: function () {
+                    if (!Common.permission.Permission.hasPermission("英雄修改")) {
+                        return true;
+                    }
+                    return false;
+                }
+            }]
         }],
         selModel: {
             selType: 'checkboxmodel'

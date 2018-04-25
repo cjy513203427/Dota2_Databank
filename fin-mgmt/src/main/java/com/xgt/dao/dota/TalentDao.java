@@ -37,4 +37,8 @@ public class TalentDao {
     public Integer countQueryTalent(TalentBean talentBean){
         return sqlSession.selectOne("dota.talent.countQueryTalent",talentBean);
     }
+
+    public List<Talent> getTalentByHeroId(Integer heroId){
+        return sqlSession.selectList("dota.talent.getTalentByHeroId",heroId);
+    }
 }

@@ -5,7 +5,7 @@ Ext.define('Admin.view.hero.HeroController', {
     extend: 'Admin.view.BaseViewController',
     alias: 'controller.hero',
 
-    requires: ['Admin.view.brand.BrandForm'],
+    requires: ['Admin.view.hero.HeroForm'],
     search: function () {
         var me = this,
             grid = me.lookupReference('grid'),
@@ -41,6 +41,28 @@ Ext.define('Admin.view.hero.HeroController', {
             }
         });
         grid.getStore().reload();
+    },
+    /**
+     * 修改英雄
+     * @param grid
+     * @param rowIndex
+     * @param colIndex
+     */
+    modifyHero: function (grid, rowIndex, colIndex) {
+        var rec = grid.getStore().getAt(rowIndex);
+        Ext.create('Admin.view.hero.HeroForm', {
+            action: 'update',
+            title: '英雄修改',
+            store: this.lookupReference('grid').getStore(),
+            viewModel: {
+                links: {
+                    theHero: {
+                        type: 'hero.Hero',
+                        create: rec.data
+                    }
+                }
+            }
+        }).show();
     },
     /**
      * 关闭窗口

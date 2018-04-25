@@ -31,4 +31,9 @@
         SELECT COUNT(1) FROM talent
         <include refid="sqlWhere"/>
     </select>
+
+    <select id="getTalentByHeroId" parameterType="Integer" resultType="com.xgt.dao.entity.dota.Talent">
+        SELECT text,chinese_name chineseName,grade,type FROM talent WHERE  hero_id = #{heroId}
+        ORDER BY grade DESC ;
+    </select>
 </mapper>

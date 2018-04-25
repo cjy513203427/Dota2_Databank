@@ -16,6 +16,8 @@ public class Talent {
 
     private Integer isDelete;
 
+    private String chineseName;
+
     public Integer getId() {
         return id;
     }
@@ -62,5 +64,13 @@ public class Talent {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public String getChineseName() {
+        return chineseName;
+    }
+
+    public void setChineseName(String chineseName) {
+        this.chineseName = chineseName;
     }
 }

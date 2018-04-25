@@ -42,4 +42,12 @@ public class TalentService {
         map.put("total",total);
         return map;
     }
+
+    public Map<String ,Object> getTalentByHeroId(Integer heroId){
+        List<Talent> list = null;
+        Map<String,Object> map = new HashedMap();
+            list=talentDao.getTalentByHeroId(heroId);
+        map.put("list",list);
+        return map;
+    }
 }

@@ -41,4 +41,8 @@ public class HeroDao {
     public Integer countQueryHero(HeroBean heroBean){
         return sqlSession.selectOne("dota.hero.countQueryHero",heroBean);
     }
+
+    public void modifyHero(HeroBean heroBean){
+        sqlSession.update("dota.hero.modifyHero",heroBean);
+    }
 }

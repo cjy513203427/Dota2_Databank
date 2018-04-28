@@ -17,7 +17,7 @@ public class ConstantsUtil {
     //订单小图
     public final static String Folder_MIN_IMAGE="Order/Min";
     //人员身份证
-    public final static String Folder_IDCARD_IMAGE="Personnel/ID_Card";
+    public final static String Folder_IDCARD_IMAGE="User/Head_portrait";
     //人员入职登记表
     public final static String Folder_ENTRYFORM_IMAGE="Personnel/EntryForm";
     //Excel路径

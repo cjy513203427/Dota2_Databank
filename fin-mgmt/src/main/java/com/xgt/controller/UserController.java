@@ -207,21 +207,6 @@ public class UserController extends BaseController {
             userBean.setIdPathName(ConstantsUtil.Folder_IDCARD_IMAGE+ConstantsUtil.FILE_SEPARATOR
                     +IDFileName+IDExtName);
         }
-
-        if(userBean.getEntryformPath().length>0){
-            OssUtil oss=new OssUtil(accessKeyId, accessKeySecret, endpoint,bucketName);
-            //入职登记表
-            String entryFormFileName = userBean.getEntryformPathName().substring(0,
-                    userBean.getEntryformPathName().lastIndexOf(".")).toLowerCase();
-            entryFormFileName = MD5Util.MD5(entryFormFileName+System.currentTimeMillis());
-            String entryFormExtName = userBean.getEntryformPathName().substring(
-                    userBean.getEntryformPathName().lastIndexOf("."), userBean.getEntryformPathName().length())
-                    .toLowerCase();
-            oss.putObject(ConstantsUtil.Folder_ENTRYFORM_IMAGE+ConstantsUtil.FILE_SEPARATOR
-                    +entryFormFileName+entryFormExtName, userBean.getEntryformPath());
-            userBean.setEntryformPathName(ConstantsUtil.Folder_ENTRYFORM_IMAGE+ConstantsUtil.FILE_SEPARATOR
-                    +entryFormFileName+entryFormExtName);
-        }
     }
     @GET
     @Path("/validateLogin")
@@ -253,30 +238,10 @@ public class UserController extends BaseController {
                 inputPart.setMediaType(MediaType.TEXT_PLAIN_TYPE);
                 userBean.setQq(inputPart.getBodyAsString());
             }
-            if (uploadForm.containsKey("idNumber")) {
-                InputPart inputPart = uploadForm.get("idNumber").get(0);
-                inputPart.setMediaType(MediaType.TEXT_PLAIN_TYPE);
-                userBean.setIdNumber(inputPart.getBodyAsString());
-            }
-            if (uploadForm.containsKey("workno")) {
-                InputPart inputPart = uploadForm.get("workno").get(0);
-                inputPart.setMediaType(MediaType.TEXT_PLAIN_TYPE);
-                userBean.setWorkno(inputPart.getBodyAsString());
-            }
             if (uploadForm.containsKey("realname")) {
                 InputPart inputPart = uploadForm.get("realname").get(0);
                 inputPart.setMediaType(MediaType.TEXT_PLAIN_TYPE);
                 userBean.setRealname(inputPart.getBodyAsString());
-            }
-            if (uploadForm.containsKey("sex")) {
-                InputPart inputPart = uploadForm.get("sex").get(0);
-                inputPart.setMediaType(MediaType.TEXT_PLAIN_TYPE);
-                userBean.setSex(inputPart.getBodyAsString());
-            }
-            if (uploadForm.containsKey("officeLogin")) {
-                InputPart inputPart = uploadForm.get("officeLogin").get(0);
-                inputPart.setMediaType(MediaType.TEXT_PLAIN_TYPE);
-                userBean.setOfficeLogin(Integer.parseInt(inputPart.getBodyAsString()));
             }
             if (uploadForm.containsKey("userType")) {
                 InputPart inputPart = uploadForm.get("userType").get(0);
@@ -293,20 +258,12 @@ public class UserController extends BaseController {
                 inputPart.setMediaType(MediaType.TEXT_PLAIN_TYPE);
                 userBean.setPhone(inputPart.getBodyAsString());
             }
-
             if (uploadForm.containsKey("idPath")) {
                 InputPart inputPart = uploadForm.get("idPath").get(0);
                 MultivaluedMap<String, String> header = inputPart.getHeaders();
                 userBean.setIdPathName(getFileName(header));
                 InputStream inputStream = inputPart.getBody(InputStream.class, null);
                 userBean.setIdPath(IOUtils.toByteArray(inputStream));
-            }
-            if (uploadForm.containsKey("entryformPath")) {
-                InputPart inputPart = uploadForm.get("entryformPath").get(0);
-                MultivaluedMap<String, String> header = inputPart.getHeaders();
-                userBean.setEntryformPathName(getFileName(header));
-                InputStream inputStream = inputPart.getBody(InputStream.class, null);
-                userBean.setEntryformPath(IOUtils.toByteArray(inputStream));
             }
 
         }

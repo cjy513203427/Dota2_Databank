@@ -5,7 +5,7 @@ Ext.define('Admin.view.talentSimulation.TalentSimulation', {
     extend: 'Ext.Panel',
     xtype: 'talentSimulation',
 
-    title: '物品模拟',
+    title: '天赋模拟',
 
     requires: [
         'Ext.form.Panel',

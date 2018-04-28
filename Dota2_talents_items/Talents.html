@@ -7,11 +7,31 @@
     <title></title>
 
     <style>
+        .talentText1 {
+            color: white;
+            background: linear-gradient(to right, #242A2F, #33393D);
+        }
+
+        .talentText2 {
+            color: whitesmoke;
+            background: linear-gradient(to right, #33393D, #242A2F);
+        }
+
+        .circle {
+            width: 30px;
+            height: 30px;
+            background-color: #0F0F0F;
+            border: 15px solid #393939;
+            border-radius: 100%;
+            text-align:center;
+            font-size:250%;
+            color: #E7D291;
+        }
     </style>
 </head>
 
 <body>
-    <div style="border: 1px solid black;width:1000px;height:2557px;margin-left:auto;margin-right:auto;">
+    <div style="width:1270px;height:2557px;margin-left:auto;margin-right:auto;">
         <div style="border: 1px solid gold;width: 534px;height: 2557px;float: left;">
             <table align="center" width="500" height="900" border=1 bordercolor="#00ff99" id="heroModel">
                 <tr>
@@ -177,35 +197,55 @@
                 </tr>
             </table>
         </div>
-        <div style="border: 1px solid red;width: 460px;height: 900px;float: right;">
-            <table align="left" width="230" height="900" border=1 bordercolor="#00ff99" id="talent1">
-                <tr>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-            </table>
-            <table align="right" width="230" height="900" border=1 bordercolor="red" id="talent2">
-                <tr>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-            </table>
+        <div style="width: 730px;height: 900px;float: right;">
+            <div style="width: 250px;height: 900px;float: left;">
+                <table align="left" width="250" height="900" border=0 bordercolor="#00ff99" id="talent1">
+                    <tr>
+                        <td class='talentText1'></td>
+                    </tr>
+                    <tr>
+                        <td class='talentText1'></td>
+                    </tr>
+                    <tr>
+                        <td class='talentText1'></td>
+                    </tr>
+                    <tr>
+                        <td class='talentText1'></td>
+                    </tr>
+                </table>
+            </div>
+            <div style="width: 220px;height: 900px;float: left;">
+                <table style="height: 900px;width: 220px">
+                    <tr style="height: 180px">
+                        <td class="circle">25</td>
+                    </tr>
+                    <tr style="height: 180px">
+                        <td class="circle">20</td>
+                    </tr>
+                    <tr style="height: 180px">
+                        <td class="circle">15</td>
+                    </tr>
+                    <tr style="height: 180px">
+                        <td class="circle">10</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="width: 250px;height: 900px;float: right;">
+                <table align="right" width="250" height="900" border=0 bordercolor="red" id="talent2">
+                    <tr>
+                        <td class='talentText2'></td>
+                    </tr>
+                    <tr>
+                        <td class='talentText2'></td>
+                    </tr>
+                    <tr>
+                        <td class='talentText2'></td>
+                    </tr>
+                    <tr>
+                        <td class='talentText2'></td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </body>
@@ -262,7 +302,7 @@
                         $('#talent1 tr:not([class])').each(function (i) {                   // 遍历 tr
                             $(this).children('td').each(function (j) {  // 遍历 tr 的各个 td
                                 //console.log(k+"比较"+i)
-                                if (k == 2*i) {
+                                if (k == 2 * i) {
                                     $(this).html("<p style='display:block'>" + data.data.list[k].chineseName + "</p>");
                                 }
                             })
@@ -271,7 +311,7 @@
                         $('#talent2 tr:not([class])').each(function (i) {                   // 遍历 tr
                             $(this).children('td').each(function (j) {  // 遍历 tr 的各个 td
                                 //console.log(k+"比较"+i)
-                                if (k == 2*i+1) {
+                                if (k == 2 * i + 1) {
                                     $(this).html("<p style='display:block'>" + data.data.list[k].chineseName + "</p>");
                                 }
                             })

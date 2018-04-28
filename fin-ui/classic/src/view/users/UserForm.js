@@ -71,44 +71,11 @@ Ext.define('Admin.view.users.UserForm', {
                 layout: 'form',
                 items: [{
                     xtype: 'textfield',
-                    name: 'workno',
-                    fieldLabel: '员工编号',
-                    bind: {
-                        value: '{theUser.workno}'
-                    }
-                }]
-            }]
-        }, {
-            layout: 'column',
-            items: [{
-                columnWidth: .5,
-                layout: 'form',
-                items: [{
-                    xtype: 'textfield',
                     name: 'realname',
-                    fieldLabel: '真实姓名',
+                    fieldLabel: '昵称',
                     bind: {
                         value: '{theUser.realname}'
                     }
-                }]
-            }, {
-                columnWidth: .5,
-                layout: 'form',
-                items: [{
-                    xtype: 'combo',
-                    fieldLabel: '性別',
-                    name: 'sex',
-                    displayField: 'label',
-                    valueField: 'value',
-                    editable: false,
-                    store: {
-                        data: [{
-                            label: '男', value: 1
-                        }, {
-                            label: '女', value: 2
-                        }]
-                    },
-                    bind: '{theUser.sex}'
                 }]
             }]
         }, {
@@ -138,67 +105,33 @@ Ext.define('Admin.view.users.UserForm', {
             }]
         }, {
             layout: 'column',
-            items: [ {
-                columnWidth: .5,
-                layout: 'form',
-                items: [{
-                    xtype: 'combo',
-                    fieldLabel: '登录限制',
-                    name: 'officeLogin',
-                    displayField: 'label',
-                    valueField: 'value',
-                    editable: false,
-                    store: {
-                        data: [{
-                            label: '办公室登录', value:0
-                        }, {
-                            label: '无限制', value:1
-                        }]
-                    },
-                    bind: '{theUser.officeLogin}'
-                }]
-            },
-             {
-                columnWidth: .5,
-                layout: 'form',
-                items: [{
-                    xtype: 'textfield',
-                    name: 'idNumber',
-                    regex: /^\d{15}|\d{18}$/,
-                    regexText: '身份证号码15到18位',
-                    fieldLabel: '身份证号码',
-                    bind: '{theUser.idNumber}'
-                }]
-            }, {
-                columnWidth: .5,
-                layout: 'form',
-                items: [{
-                    xtype: 'combo',
-                    fieldLabel: '用户类型',
-                    name: 'userType',
-                    displayField: 'label',
-                    valueField: 'value',
-                    editable: false,
-                    hidden:true,
-                    store: {
-                        data: [{
-                            label: '管理员', value: 1
-                        },{
-                            label: '设计师', value: 3
-                        }]
-                    },
-                    bind: '{theUser.userType}'
-                }]
-            }]
-        }, {
-            layout: 'column',
-            items: [{
+            items: [
+                {
+                    columnWidth: .5,
+                    layout: 'form',
+                    items: [{
+                        xtype: 'combo',
+                        fieldLabel: '用户类型',
+                        name: 'userType',
+                        displayField: 'label',
+                        valueField: 'value',
+                        editable: false,
+                        store: {
+                            data: [{
+                                label: '游戏运营人员', value: 1
+                            },{
+                                label: '玩家', value: 3
+                            }]
+                        },
+                        bind: '{theUser.userType}'
+                    }]
+                }, {
                     columnWidth: .5,
                     layout: 'form',
                     items: [{
                         xtype: 'filefield',
                         name: 'idPath',
-                        fieldLabel: '身份证复印件',
+                        fieldLabel: '头像',
                         labelWidth: 50,
                         msgTarget: 'side',
                         anchor: '100%',
@@ -230,48 +163,8 @@ Ext.define('Admin.view.users.UserForm', {
                             hidden: '{showIdCardButton}'
                         }
                     }]
-                },
-                {
-                    columnWidth: .5,
-                    layout: 'form',
-                    items: [ {
-                    xtype: 'filefield',
-                    name: 'entryformPath',
-                    fieldLabel: '入职登记表',
-                    labelWidth: 50,
-                    msgTarget: 'side',
-                    anchor: '100%',
-                    accept: 'image/jpeg,image/png',
-                    buttonText: '选择图片...',
-                    validator: function (value) {
-                        if(value==''){
-                            return true;
-                        }
-                        var arr = value.split('.');
-                        if (arr[arr.length - 1] == 'jpg' || arr[arr.length - 1] == 'jpeg'
-                            || arr[arr.length - 1] == 'JPG' || arr[arr.length - 1] == 'JPEG' || arr[arr.length - 1] == 'PNG' || arr[arr.length - 1] == 'png') {
-                            return true;
-                        } else {
-                            return '必须选择JPG或者PNG格式的图片！';
-                        }
-                    }
-                }, {
-                    xtype: 'button',
-                    text: '查看',
-                    hidden: true,
-                    handler: function () {
-                        var me = this,
-                            w=me.up('window'),
-                            viewModel=w.getViewModel().data;
-                        window.open(Common.Dic.config.IMG_ADDRESS+'/'+viewModel.theUser.data.entryformPath);
-                    },
-                    bind: {
-                        hidden: '{showEntryformButton}'
-                    }
                 }]
-            }]
-        },
-            {
+        },{
                 xtype: 'textareafield',
                 fieldLabel: '描述',
                 name: 'description',

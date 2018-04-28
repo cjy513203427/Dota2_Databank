@@ -34,7 +34,7 @@
     <!-- 获取用户信息 -->
     <select id="selectUser" resultType="com.xgt.dao.entity.User" parameterType="String">
         SELECT  u.id userId,u.password password,u.username username,u.workno,u.realname,
-        modify_password modifyPassword,office_login officeLogin
+        modify_password modifyPassword,office_login officeLogin,id_path idPath
         FROM ct_user u WHERE u.username = #{username} AND status=1 limit 1
     </select>
 
@@ -88,7 +88,7 @@
     <insert id="insertUser" parameterType="com.xgt.bean.UserBean" useGeneratedKeys="true" keyProperty="userId">
         INSERT INTO ct_user SET username=#{username}, password=#{password},qq=#{qq},
         description=#{description}, realname=#{realname}
-        , workno=#{workno}, sex=#{sex},id_number=#{idNumber},phone=#{phone}
+        , sex=#{sex},phone=#{phone}
         <if test="idPathName!=null">
             ,id_path=#{idPathName}
         </if>

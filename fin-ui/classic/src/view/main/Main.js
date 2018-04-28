@@ -30,6 +30,7 @@ Ext.define('Admin.view.main.Main', {
         }, function (data) {
             record = data.data;
             boxData.realname = record.realname;
+            boxData.idPath = record.idPath;
             boxData.userId=record.userId;
             modifyPassword = record.modifyPassword;
             Common.permission.Permission.server_permcollections = record.buttonList;
@@ -86,6 +87,11 @@ Ext.define('Admin.view.main.Main', {
                 tpl: '欢迎：{realname}',
                 data: boxData
             }, {
+                xtype: 'box',
+                reference: 'profile',
+                tpl: '<img width="40px" height="40px" src="https://dota2cjy.oss-cn-beijing.aliyuncs.com/{idPath}">',
+                data: boxData
+            },{
                 xtype: 'button',
                 text: '退出',
                 handler: 'logout'

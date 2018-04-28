@@ -7,15 +7,15 @@
     <title></title>
     <!-- <link rel="stylesheet" href=""> -->
     <style>
-
         .title {}
     </style>
+    <link rel="stylesheet" type="text/css" href="css/buttons.css">
 </head>
 
 <body>
     <div style="width:1000px;height:900px;margin-left:auto;margin-right:auto;">
         <div style="width:500px;height:900px;float:left">
-            <table align="center" width="500" height="900" border=1 bordercolor="#00ff99" id="simpleItems">
+            <table align="center" width="500" height="900" border=0 bordercolor="#00ff99" id="simpleItems">
                 <tbody>
                     <tr class="title">
                         <td colspan="4" width="25%" height="10%">默认攻略</td>
@@ -111,25 +111,23 @@
             </table>
         </div>
         <div style="width:500px;height:1333px;margin-left:500px;">
-            <table align="center" width="500" height="900" border=1 bordercolor="#00ff99" id="wholeItems">
+            <table align="center" width="500" height="900" border=0 bordercolor="#00ff99" id="wholeItems">
                 <tbody>
                     <tr class="title">
-                        <td width="25%" height="10%">搜索</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="5">
+                            <INPUT value="Type here" NAME="user_pass" TYPE="text" SIZE="40" onmouseover="this.style.borderColor='black';this.style.backgroundColor='plum'"
+                                style="width: 106; height: 21" onmouseout="this.style.borderColor='black';this.style.backgroundColor='#ffffff'"
+                                style="border-width:1px;border-color:black">
+                            <button class="button button-rounded button-tiny"> 搜索</button>
+                        </td>
                     </tr>
                     <tr class="title">
-                        <td width="25%" height="10%">
-                            <button id="primaryItem">基础物品</button>
+                        <td colspan="2" width="25%" height="10%">
+                            <button id="primaryItem" class="button button-primary button-rounded button-small">基础物品</button>
                         </td>
-                        <td></td>
-                        <td></td>
-                        <td width="25%" height="10%">
-                            <button id="upgratedItem">升级物品</button>
+                        <td colspan="3" width="25%" height="10%">
+                            <button id="upgratedItem" class="button button-primary button-rounded button-small">升级物品</button>
                         </td>
-                        <td></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -254,7 +252,7 @@
             </table>
         </div>
         <div style="width:500px;height:500px;margin-left:500px;">
-            <table align="center" width="500" height="500" border=1 bordercolor="#00ff99" id="dynamicCompound">
+            <table align="center" width="500" height="500" border=0 bordercolor="#00ff99" id="dynamicCompound">
                 <tbody>
                     <tr></tr>
                     <tr></tr>
@@ -406,7 +404,7 @@
                                         }
                                     }
                                     $("#dynamicCompound tbody tr:eq(0)").append('<td align="center">' + "<img src='" + data.data.list[k].itemPath + "'>" + '</td>');
-                                    
+
                                 }
                                 //获取物品id的点击事件
                                 $("#wholeItems tr td").click(function () {    //td点击事件；
@@ -523,7 +521,7 @@
                                         }
                                     }
                                     $("#dynamicCompound tbody tr:eq(0)").append('<td align="center">' + "<img src='" + data.data.list[k].itemPath + "'>" + '</td>');
-                                    
+
                                 }
                                 //获取物品id的点击事件
                                 $("#wholeItems tr td").click(function () {    //td点击事件；

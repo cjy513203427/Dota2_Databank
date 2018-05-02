@@ -7,6 +7,9 @@
         <if test="localizedName!=null and localizedName!=''">
           AND `localized_name` LIKE CONCAT ('%',#{localizedName},'%')
         </if>
+        <if test="chineseName!=null and chineseName!=''">
+            AND `chinese_name` LIKE CONCAT ('%',#{chineseName},'%')
+        </if>
     </sql>
     <insert id="addGameItemFromSteamAPI" parameterType="com.xgt.bean.dota.ItemBean">
         INSERT item SET id = #{id},name = #{name},cost = #{cost},secret_shop = #{secretShop},

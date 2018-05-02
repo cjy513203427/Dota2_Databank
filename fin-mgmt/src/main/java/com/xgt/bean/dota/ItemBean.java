@@ -23,7 +23,7 @@ public class ItemBean extends PageQueryEntity{
     private Integer upgratedItem;
     @QueryParam("localizedName")
     private String localizedName;
-
+    @QueryParam("chineseName")
     private String chineseName;
 
     private String itemPath;

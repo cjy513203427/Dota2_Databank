@@ -616,6 +616,33 @@
                 dataType: "json"
             });
         });
+
+        $("#searchButton").click(function () {    //按钮点击事件；
+            $.ajax({
+                type: 'GET',
+                url: "http://127.0.0.1:8004/rest/item/queryItem",
+                data: {
+                    chineseName: $(" input[ name='chinesename_input' ] ").val()
+                },
+                success: function (data) {
+                    var datas = data.data;
+                    $('#wholeItems tr:not([class])').each(function (i) {                   // 遍历 tr
+                        $(this).children('td').each(function (j) {  // 遍历 tr 的各个 td
+                            //console.log("第" + (i + 1) + "行，第" + (j + 1) + "个td的值：" + $(this).text() + "。");
+                            for (var k = 0; k < data.data.list.length; k++) {
+                                $(this).empty();
+                                if(i==data.data.list.length&&j==data.data.list.length){
+                                    var id = "<p style='display:none'>" + data.data.list[k].id + "</p>";
+                                    $(this).html(id + "<img src='" + data.data.list[k].itemPath + "'>")
+                                }
+
+                            }
+
+                        });
+                    });
+                }
+            })
+        })
     </script>
 </body>
 

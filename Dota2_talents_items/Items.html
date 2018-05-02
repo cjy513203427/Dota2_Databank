@@ -13,297 +13,346 @@
 </head>
 
 <body>
-    <div style="width:1000px;height:900px;margin-left:auto;margin-right:auto;">
-        <div style="width:500px;height:900px;float:left">
-            <table align="center" width="500" height="900" border=0 bordercolor="#00ff99" id="simpleItems">
-                <tbody>
-                    <tr class="title">
-                        <td colspan="4" width="25%" height="10%">默认攻略</td>
-                    </tr>
-                    <tr class="title">
-                        <td colspan="4" width="25%" height="10%">出门装备</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td id="itemPath"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr class="title">
-                        <td colspan="4" width="25%" height="10%">前期装备</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr class="title">
-                        <td colspan="4" width="25%" height="10%">中期</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr class="tiitle">
-                        <td colspan="4" width="25%" height="10%">后期</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr class="tiitle">
-                        <td colspan="4" width="25%" height="10%">热门物品</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div style="width:500px;height:1333px;margin-left:500px;">
-            <table align="center" width="500" height="900" border=0 bordercolor="#00ff99" id="wholeItems">
-                <tbody>
-                    <tr class="title">
-                        <td colspan="5">
-                            <INPUT value="Type here" NAME="user_pass" TYPE="text" SIZE="40" onmouseover="this.style.borderColor='black';this.style.backgroundColor='plum'"
-                                style="width: 106; height: 21" onmouseout="this.style.borderColor='black';this.style.backgroundColor='#ffffff'"
-                                style="border-width:1px;border-color:black">
-                            <button class="button button-rounded button-tiny"> 搜索</button>
-                        </td>
-                    </tr>
-                    <tr class="title">
-                        <td colspan="2" width="25%" height="10%">
-                            <button id="primaryItem" class="button button-primary button-rounded button-small">基础物品</button>
-                        </td>
-                        <td colspan="3" width="25%" height="10%">
-                            <button id="upgratedItem" class="button button-primary button-rounded button-small">升级物品</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div style="width:500px;height:500px;margin-left:500px;">
-            <table align="center" width="500" height="500" border=0 bordercolor="#00ff99" id="dynamicCompound">
-                <tbody>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr></tr>
-                </tbody>
-            </table>
-        </div>
+<div style="width:1000px;height:900px;margin-left:auto;margin-right:auto;">
+    <div style="width:500px;height:900px;float:left">
+        <table align="center" width="500" height="900" border=0 bordercolor="#00ff99" id="simpleItems">
+            <tbody>
+            <tr class="title">
+                <td colspan="4" width="25%" height="10%">默认攻略</td>
+            </tr>
+            <tr class="title">
+                <td colspan="4" width="25%" height="10%">出门装备</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td id="itemPath"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="title">
+                <td colspan="4" width="25%" height="10%">前期装备</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="title">
+                <td colspan="4" width="25%" height="10%">中期</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="tiitle">
+                <td colspan="4" width="25%" height="10%">后期</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="tiitle">
+                <td colspan="4" width="25%" height="10%">热门物品</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
+    <div style="width:500px;height:1333px;margin-left:500px;">
+        <table align="center" width="500" height="900" border=0 bordercolor="#00ff99" id="wholeItems">
+            <tbody>
+            <tr class="title">
+                <td colspan="5">
+                    <INPUT value="输入物品名" NAME="chinesename_input" TYPE="text" SIZE="40" onmouseover="this.style.borderColor='black';this.style.backgroundColor='plum'"
+                           style="width: 106; height: 21" onmouseout="this.style.borderColor='black';this.style.backgroundColor='#ffffff'"
+                           style="border-width:1px;border-color:black">
+                    <button id="searchButton" class="button button-rounded button-tiny"> 搜索</button>
+                </td>
+            </tr>
+            <tr class="title">
+                <td colspan="2" width="25%" height="10%">
+                    <button id="primaryItem" class="button button-primary button-rounded button-small">基础物品</button>
+                </td>
+                <td colspan="3" width="25%" height="10%">
+                    <button id="upgratedItem" class="button button-primary button-rounded button-small">升级物品</button>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="width:500px;height:500px;margin-left:500px;">
+        <table align="center" width="500" height="500" border=0 bordercolor="#00ff99" id="dynamicCompound">
+            <tbody>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript">
-        $.ajax({
-            type: 'GET',
-            url: "http://127.0.0.1:8004/rest/item/queryItem",
-            data: {
-                // itemPath: "itemPath"
-            },
-            success: function (data) {
-                //alert(data.data.list[0].itemPath);
-                //$("#l").html("<img src='" + data.data.list[0].itemPath + "'>")
-                var datas = data.data;
-                // $.each(datas, function (index, elemtent) {
+<script src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    $.ajax({
+        type: 'GET',
+        url: "http://127.0.0.1:8004/rest/item/queryItem",
+        data: {
+            // itemPath: "itemPath"
+        },
+        success: function (data) {
+            //alert(data.data.list[0].itemPath);
+            //$("#l").html("<img src='" + data.data.list[0].itemPath + "'>")
+            var datas = data.data;
+            // $.each(datas, function (index, elemtent) {
 
 
-                //     $.each(elemtent, function (name, value) {
-                //         alert(name + '-' + value.itemPath);
-                //     });
-                // }
-                // )
+            //     $.each(elemtent, function (name, value) {
+            //         alert(name + '-' + value.itemPath);
+            //     });
+            // }
+            // )
 
-                //物品遍历部分
-                $('#simpleItems tr:not([class])').each(function (i) {                   // 遍历 tr
-                    $(this).children('td').each(function (j) {  // 遍历 tr 的各个 td
-                        //console.log("第" + (i + 1) + "行，第" + (j + 1) + "个td的值：" + $(this).text() + "。");
-                        for (var k = 0; k < data.data.list.length; k++) {
-                            if (k > 4 * i && k <= 4 * (i + 1)) {
-                                if (k % 4 == (j + 1)) {
-                                    //console.log(k + "-" + data.data.list[k].itemPath);
-                                    var id = "<p style='display:none'>" + data.data.list[k].id + "</p>";
-                                    $(this).html(id + "<img src='" + data.data.list[k].itemPath + "'>")
-                                    return true;
-                                } else if (k % 4 == 0) {
-                                    //console.log(k + "-" + data.data.list[k].itemPath);
-                                    var id = "<p style='display:none'>" + data.data.list[k].id + "</p>";
-                                    $(this).html(id + "<img src='" + data.data.list[k].itemPath + "'>")
-                                }
+            //物品遍历部分
+            $('#simpleItems tr:not([class])').each(function (i) {                   // 遍历 tr
+                $(this).children('td').each(function (j) {  // 遍历 tr 的各个 td
+                    //console.log("第" + (i + 1) + "行，第" + (j + 1) + "个td的值：" + $(this).text() + "。");
+                    for (var k = 0; k < data.data.list.length; k++) {
+                        if (k > 4 * i && k <= 4 * (i + 1)) {
+                            if (k % 4 == (j + 1)) {
+                                //console.log(k + "-" + data.data.list[k].itemPath);
+                                var id = "<p style='display:none'>" + data.data.list[k].id + "</p>";
+                                $(this).html(id + "<img src='" + data.data.list[k].itemPath + "'>")
+                                return true;
+                            } else if (k % 4 == 0) {
+                                //console.log(k + "-" + data.data.list[k].itemPath);
+                                var id = "<p style='display:none'>" + data.data.list[k].id + "</p>";
+                                $(this).html(id + "<img src='" + data.data.list[k].itemPath + "'>")
                             }
                         }
-                    });
+                    }
                 });
+            });
 
+            $('#wholeItems tr:not([class])').each(function (i) {                   // 遍历 tr
+                $(this).children('td').each(function (j) {  // 遍历 tr 的各个 td
+                    //console.log("第" + (i + 1) + "行，第" + (j + 1) + "个td的值：" + $(this).text() + "。");
+                    for (var k = 0; k < data.data.list.length; k++) {
+                        if (k > 5 * i && k <= 5 * (i + 1)) {
+                            if (k % 5 == (j + 1)) {
+                                //console.log(k + "-" + data.data.list[k].itemPath);
+                                var id = "<p style='display:none'>" + data.data.list[k].id + "</p>";
+                                $(this).html(id + "<img src='" + data.data.list[k].itemPath + "'>")
+                                return true;
+                            } else if (k % 5 == 0) {
+                                //console.log(k + "-" + data.data.list[k].itemPath);
+                                var id = "<p style='display:none'>" + data.data.list[k].id + "</p>";
+                                $(this).html(id + "<img src='" + data.data.list[k].itemPath + "'>")
+                            }
+                        }
+                    }
+                });
+            });
+
+            //获取物品id
+            $("#simpleItems tr td").click(function () {    //td点击事件；
+                var val = $(this).children("p").html();  //定义val值为点击的此td的id值；
+                //alert(val);
+                //$("#dynamicCompound tbody").append('<tr><td></td><td></td><td></td></tr>');
+            })
+
+            $("#wholeItems tr td").click(function () {    //td点击事件；
+                var val = $(this).children("p").html();  //定义val值为点击的此td的id值；
+                //alert(val);
+            })
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
+        },
+        dataType: "json"
+    });
+
+    //非升级物品的点击事件
+    $("#primaryItem").click(function () {
+        $.ajax({
+            type: 'GET',
+            url: "http://127.0.0.1:8004/rest/item/queryChineseNameItem",
+            data: {
+                upgratedItem: 0
+            },
+            success: function (data) {
                 $('#wholeItems tr:not([class])').each(function (i) {                   // 遍历 tr
                     $(this).children('td').each(function (j) {  // 遍历 tr 的各个 td
                         //console.log("第" + (i + 1) + "行，第" + (j + 1) + "个td的值：" + $(this).text() + "。");
@@ -323,17 +372,240 @@
                         }
                     });
                 });
-
-                //获取物品id
-                $("#simpleItems tr td").click(function () {    //td点击事件；
-                    var val = $(this).children("p").html();  //定义val值为点击的此td的id值；
-                    //alert(val);
-                    //$("#dynamicCompound tbody").append('<tr><td></td><td></td><td></td></tr>');
-                })
-
+                //获取物品id的点击事件
                 $("#wholeItems tr td").click(function () {    //td点击事件；
                     var val = $(this).children("p").html();  //定义val值为点击的此td的id值；
-                    //alert(val);
+                    //console.log(val);
+                    $.ajax({
+                        type: 'GET',
+                        url: "http://127.0.0.1:8004/rest/item/queryItemFather",
+                        data: {
+                            itemId: val
+                        },
+                        success: function (data) {
+                            var datas = data.data;
+                            for (var k = 0; k < data.data.list.length; k++) {
+                                //含有单个父物品的物品重复点击自身
+                                if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length == 1) {
+                                    if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length >= data.data.list.length) {
+                                        $("#dynamicCompound tbody tr:eq(0)").empty();
+                                    }
+
+                                }
+                                //点击含有单个父物品的物品再点击含有多个父物品的物品
+                                if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length == data.data.list.length) {
+                                    $("#dynamicCompound tbody tr:eq(0) td:eq(0)").remove();
+                                }
+                                //含有多个父物品的物品重复点击自身
+                                if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length >= 2) {
+                                    if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length >= data.data.list.length) {
+                                        $("#dynamicCompound tbody tr:eq(0)").empty();
+
+                                    }
+                                }
+                                $("#dynamicCompound tbody tr:eq(0)").append('<td align="center">' + "<img src='" + data.data.list[k].itemPath + "'>" + '</td>');
+
+                            }
+                            //获取物品id的点击事件
+                            $("#wholeItems tr td").click(function () {    //td点击事件；
+                                var val = $(this).children("p").html();  //定义val值为点击的此td的id值；
+                                //console.log(val);
+                                $.ajax({
+                                    type: 'GET',
+                                    url: "http://127.0.0.1:8004/rest/item/getItemById",
+                                    data: {
+                                        itemId: val
+                                    },
+                                    success: function (data) {
+                                        var datas = data.data;
+                                        for (var k = 0; k < data.data.list.length; k++) {
+                                            //物品重复点击自身清空再append
+                                            if ($('#dynamicCompound').children("tbody").children("tr:eq(1)").children("td").length == 1) {
+                                                $("#dynamicCompound tbody tr:eq(1)").empty();
+                                            }
+                                            $("#dynamicCompound tbody tr:eq(1)").append('<td align="center">' + "<img src='" + data.data.list[k].itemPath + "'>" + '</td>');
+
+                                        }
+
+                                    },
+                                    error: function (jqXHR, textStatus, errorThrown) {
+                                        alert(XMLHttpRequest.status);
+                                        alert(XMLHttpRequest.readyState);
+                                        alert(textStatus);
+                                    },
+                                    dataType: "json"
+                                })
+                            })
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            alert(XMLHttpRequest.status);
+                            alert(XMLHttpRequest.readyState);
+                            alert(textStatus);
+                        },
+                        dataType: "json"
+                    })
+                })
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert(XMLHttpRequest.status);
+                alert(XMLHttpRequest.readyState);
+                alert(textStatus);
+            },
+            dataType: "json"
+        });
+    })
+
+    //升级物品的点击事件
+    $("#upgratedItem").click(function () {
+        $.ajax({
+            type: 'GET',
+            url: "http://127.0.0.1:8004/rest/item/queryChineseNameItem",
+            data: {
+                upgratedItem: 1
+            },
+            async: false,
+            success: function (data) {
+                var datas = data.data;
+                $('#wholeItems tr:not([class])').each(function (i) {                   // 遍历 tr
+                    $(this).children('td').each(function (j) {  // 遍历 tr 的各个 td
+                        //console.log("第" + (i + 1) + "行，第" + (j + 1) + "个td的值：" + $(this).text() + "。");
+                        for (var k = 0; k < data.data.list.length; k++) {
+                            if (k > 5 * i && k <= 5 * (i + 1)) {
+                                if (k % 5 == (j + 1)) {
+                                    //console.log(k + "-" + data.data.list[k].itemPath);
+                                    var id = "<p style='display:none'>" + data.data.list[k].id + "</p>";
+                                    $(this).html(id + "<img src='" + data.data.list[k].itemPath + "'>");
+                                    return true;
+                                } else if (k % 5 == 0) {
+                                    //console.log(k + "-" + data.data.list[k].itemPath);
+                                    var id = "<p style='display:none'>" + data.data.list[k].id + "</p>";
+                                    $(this).html(id + "<img src='" + data.data.list[k].itemPath + "'>")
+                                }
+                            }
+                        }
+                    });
+                });
+
+
+                //获取物品id的点击事件
+                $("#wholeItems tr td").click(function () {    //td点击事件；
+                    var val = $(this).children("p").html();  //定义val值为点击的此td的id值；
+                    //console.log(val);
+                    $.ajax({
+                        type: 'GET',
+                        url: "http://127.0.0.1:8004/rest/item/queryItemFather",
+                        data: {
+                            itemId: val
+                        },
+                        success: function (data) {
+                            var datas = data.data;
+                            for (var k = 0; k < data.data.list.length; k++) {
+                                //含有单个父物品的物品重复点击自身
+                                if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length == 1) {
+                                    if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length >= data.data.list.length) {
+                                        $("#dynamicCompound tbody tr:eq(0)").empty();
+                                    }
+
+                                }
+                                //点击含有单个父物品的物品再点击含有多个父物品的物品
+                                if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length == data.data.list.length) {
+                                    $("#dynamicCompound tbody tr:eq(0) td:eq(0)").remove();
+                                }
+                                //含有多个父物品的物品重复点击自身
+                                if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length >= 2) {
+                                    if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length >= data.data.list.length) {
+                                        $("#dynamicCompound tbody tr:eq(0)").empty();
+
+                                    }
+                                }
+                                $("#dynamicCompound tbody tr:eq(0)").append('<td align="center">' + "<img src='" + data.data.list[k].itemPath + "'>" + '</td>');
+
+                            }
+                            //获取物品id的点击事件
+                            $("#wholeItems tr td").click(function () {    //td点击事件；
+                                var val = $(this).children("p").html();  //定义val值为点击的此td的id值；
+                                //console.log(val);
+                                $.ajax({
+                                    type: 'GET',
+                                    url: "http://127.0.0.1:8004/rest/item/getItemById",
+                                    data: {
+                                        itemId: val
+                                    },
+                                    success: function (data) {
+                                        var datas = data.data;
+                                        for (var k = 0; k < data.data.list.length; k++) {
+                                            //物品重复点击自身清空再append
+                                            if ($('#dynamicCompound').children("tbody").children("tr:eq(1)").children("td").length == 1) {
+                                                $("#dynamicCompound tbody tr:eq(1)").empty();
+                                            }
+                                            $("#dynamicCompound tbody tr:eq(1)").append('<td align="center">' + "<img src='" + data.data.list[k].itemPath + "'>" + '</td>');
+
+                                        }
+                                        //获取物品id的点击事件
+                                        $("#wholeItems tr td").click(function () {    //td点击事件；
+                                            var val = $(this).children("p").html();  //定义val值为点击的此td的id值；
+                                            //console.log(val);
+                                            $.ajax({
+                                                type: 'GET',
+                                                url: "http://127.0.0.1:8004/rest/item/queryItemCompound",
+                                                data: {
+                                                    itemId: val
+                                                },
+                                                success: function (data) {
+                                                    var datas = data.data;
+                                                    for (var k = 0; k < data.data.list.length; k++) {
+                                                        //含有单个子物品的物品重复点击自身
+                                                        if ($('#dynamicCompound').children("tbody").children("tr:eq(2)").children("td").length == 1) {
+                                                            if ($('#dynamicCompound').children("tbody").children("tr:eq(2)").children("td").length >= data.data.list.length) {
+                                                                $("#dynamicCompound tbody tr:eq(2)").empty();
+                                                            }
+
+                                                        }
+                                                        //点击含有单个子物品的物品再点击含有多个父物品的物品
+                                                        if ($('#dynamicCompound').children("tbody").children("tr:eq(2)").children("td").length == data.data.list.length) {
+                                                            $("#dynamicCompound tbody tr:eq(2) td:eq(2)").remove();
+                                                        }
+                                                        //含有多个子物品的物品重复点击自身
+                                                        if ($('#dynamicCompound').children("tbody").children("tr:eq(2)").children("td").length >= 2) {
+                                                            if ($('#dynamicCompound').children("tbody").children("tr:eq(2)").children("td").length >= data.data.list.length) {
+                                                                $("#dynamicCompound tbody tr:eq(2)").empty();
+
+                                                            }
+                                                        }
+                                                        $("#dynamicCompound tbody tr:eq(2)").append('<td align="center">' + "<img src='" + data.data.list[k].itemPath + "'>" + '</td>');
+                                                    }
+
+
+                                                },
+                                                error: function (jqXHR, textStatus, errorThrown) {
+                                                    alert(XMLHttpRequest.status);
+                                                    alert(XMLHttpRequest.readyState);
+                                                    alert(textStatus);
+                                                },
+                                                dataType: "json"
+                                            })
+                                        })
+
+                                    },
+                                    error: function (jqXHR, textStatus, errorThrown) {
+                                        alert(XMLHttpRequest.status);
+                                        alert(XMLHttpRequest.readyState);
+                                        alert(textStatus);
+                                    },
+                                    dataType: "json"
+                                })
+                            })
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            alert(XMLHttpRequest.status);
+                            alert(XMLHttpRequest.readyState);
+                            alert(textStatus);
+                        },
+                        dataType: "json"
+                    })
                 })
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -343,307 +615,35 @@
             },
             dataType: "json"
         });
+    });
 
-        //非升级物品的点击事件
-        $("#primaryItem").click(function () {
-            $.ajax({
-                type: 'GET',
-                url: "http://127.0.0.1:8004/rest/item/queryChineseNameItem",
-                data: {
-                    upgratedItem: 0
-                },
-                success: function (data) {
-                    $('#wholeItems tr:not([class])').each(function (i) {                   // 遍历 tr
-                        $(this).children('td').each(function (j) {  // 遍历 tr 的各个 td
-                            //console.log("第" + (i + 1) + "行，第" + (j + 1) + "个td的值：" + $(this).text() + "。");
-                            for (var k = 0; k < data.data.list.length; k++) {
-                                if (k > 5 * i && k <= 5 * (i + 1)) {
-                                    if (k % 5 == (j + 1)) {
-                                        //console.log(k + "-" + data.data.list[k].itemPath);
-                                        var id = "<p style='display:none'>" + data.data.list[k].id + "</p>";
-                                        $(this).html(id + "<img src='" + data.data.list[k].itemPath + "'>")
-                                        return true;
-                                    } else if (k % 5 == 0) {
-                                        //console.log(k + "-" + data.data.list[k].itemPath);
-                                        var id = "<p style='display:none'>" + data.data.list[k].id + "</p>";
-                                        $(this).html(id + "<img src='" + data.data.list[k].itemPath + "'>")
-                                    }
-                                }
+    $("#searchButton").click(function () {    //按钮点击事件；
+        $.ajax({
+            type: 'GET',
+            url: "http://127.0.0.1:8004/rest/item/queryItem",
+            data: {
+                chineseName: $(" input[ name='chinesename_input' ] ").val()
+            },
+            success: function (data) {
+                var datas = data.data;
+                $('#wholeItems tr:not([class])').each(function (i) {                   // 遍历 tr
+                    $(this).children('td').each(function (j) {  // 遍历 tr 的各个 td
+                        //console.log("第" + (i + 1) + "行，第" + (j + 1) + "个td的值：" + $(this).text() + "。");
+                        for (var k = 0; k < data.data.list.length; k++) {
+                            $(this).empty();
+                            if(i==data.data.list.length&&j==data.data.list.length){
+                                var id = "<p style='display:none'>" + data.data.list[k].id + "</p>";
+                                $(this).html(id + "<img src='" + data.data.list[k].itemPath + "'>")
                             }
-                        });
+
+                        }
+
                     });
-                    //获取物品id的点击事件
-                    $("#wholeItems tr td").click(function () {    //td点击事件；
-                        var val = $(this).children("p").html();  //定义val值为点击的此td的id值；
-                        //console.log(val);
-                        $.ajax({
-                            type: 'GET',
-                            url: "http://127.0.0.1:8004/rest/item/queryItemFather",
-                            data: {
-                                itemId: val
-                            },
-                            success: function (data) {
-                                var datas = data.data;
-                                for (var k = 0; k < data.data.list.length; k++) {
-                                    //含有单个父物品的物品重复点击自身
-                                    if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length == 1) {
-                                        if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length >= data.data.list.length) {
-                                            $("#dynamicCompound tbody tr:eq(0)").empty();
-                                        }
-
-                                    }
-                                    //点击含有单个父物品的物品再点击含有多个父物品的物品
-                                    if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length == data.data.list.length) {
-                                        $("#dynamicCompound tbody tr:eq(0) td:eq(0)").remove();
-                                    }
-                                    //含有多个父物品的物品重复点击自身
-                                    if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length >= 2) {
-                                        if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length >= data.data.list.length) {
-                                            $("#dynamicCompound tbody tr:eq(0)").empty();
-
-                                        }
-                                    }
-                                    $("#dynamicCompound tbody tr:eq(0)").append('<td align="center">' + "<img src='" + data.data.list[k].itemPath + "'>" + '</td>');
-
-                                }
-                                //获取物品id的点击事件
-                                $("#wholeItems tr td").click(function () {    //td点击事件；
-                                    var val = $(this).children("p").html();  //定义val值为点击的此td的id值；
-                                    //console.log(val);
-                                    $.ajax({
-                                        type: 'GET',
-                                        url: "http://127.0.0.1:8004/rest/item/getItemById",
-                                        data: {
-                                            itemId: val
-                                        },
-                                        success: function (data) {
-                                            var datas = data.data;
-                                            for (var k = 0; k < data.data.list.length; k++) {
-                                                //物品重复点击自身清空再append
-                                                if ($('#dynamicCompound').children("tbody").children("tr:eq(1)").children("td").length == 1) {
-                                                    $("#dynamicCompound tbody tr:eq(1)").empty();
-                                                }
-                                                $("#dynamicCompound tbody tr:eq(1)").append('<td align="center">' + "<img src='" + data.data.list[k].itemPath + "'>" + '</td>');
-
-                                            }
-
-                                        },
-                                        error: function (jqXHR, textStatus, errorThrown) {
-                                            alert(XMLHttpRequest.status);
-                                            alert(XMLHttpRequest.readyState);
-                                            alert(textStatus);
-                                        },
-                                        dataType: "json"
-                                    })
-                                })
-
-                            },
-                            error: function (jqXHR, textStatus, errorThrown) {
-                                alert(XMLHttpRequest.status);
-                                alert(XMLHttpRequest.readyState);
-                                alert(textStatus);
-                            },
-                            dataType: "json"
-                        })
-                    })
-
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    alert(XMLHttpRequest.status);
-                    alert(XMLHttpRequest.readyState);
-                    alert(textStatus);
-                },
-                dataType: "json"
-            });
+                });
+            }
         })
-
-        //升级物品的点击事件
-        $("#upgratedItem").click(function () {
-            $.ajax({
-                type: 'GET',
-                url: "http://127.0.0.1:8004/rest/item/queryChineseNameItem",
-                data: {
-                    upgratedItem: 1
-                },
-                async: false,
-                success: function (data) {
-                    var datas = data.data;
-                    $('#wholeItems tr:not([class])').each(function (i) {                   // 遍历 tr
-                        $(this).children('td').each(function (j) {  // 遍历 tr 的各个 td
-                            //console.log("第" + (i + 1) + "行，第" + (j + 1) + "个td的值：" + $(this).text() + "。");
-                            for (var k = 0; k < data.data.list.length; k++) {
-                                if (k > 5 * i && k <= 5 * (i + 1)) {
-                                    if (k % 5 == (j + 1)) {
-                                        //console.log(k + "-" + data.data.list[k].itemPath);
-                                        var id = "<p style='display:none'>" + data.data.list[k].id + "</p>";
-                                        $(this).html(id + "<img src='" + data.data.list[k].itemPath + "'>");
-                                        return true;
-                                    } else if (k % 5 == 0) {
-                                        //console.log(k + "-" + data.data.list[k].itemPath);
-                                        var id = "<p style='display:none'>" + data.data.list[k].id + "</p>";
-                                        $(this).html(id + "<img src='" + data.data.list[k].itemPath + "'>")
-                                    }
-                                }
-                            }
-                        });
-                    });
-
-
-                    //获取物品id的点击事件
-                    $("#wholeItems tr td").click(function () {    //td点击事件；
-                        var val = $(this).children("p").html();  //定义val值为点击的此td的id值；
-                        //console.log(val);
-                        $.ajax({
-                            type: 'GET',
-                            url: "http://127.0.0.1:8004/rest/item/queryItemFather",
-                            data: {
-                                itemId: val
-                            },
-                            success: function (data) {
-                                var datas = data.data;
-                                for (var k = 0; k < data.data.list.length; k++) {
-                                    //含有单个父物品的物品重复点击自身
-                                    if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length == 1) {
-                                        if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length >= data.data.list.length) {
-                                            $("#dynamicCompound tbody tr:eq(0)").empty();
-                                        }
-
-                                    }
-                                    //点击含有单个父物品的物品再点击含有多个父物品的物品
-                                    if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length == data.data.list.length) {
-                                        $("#dynamicCompound tbody tr:eq(0) td:eq(0)").remove();
-                                    }
-                                    //含有多个父物品的物品重复点击自身
-                                    if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length >= 2) {
-                                        if ($('#dynamicCompound').children("tbody").children("tr:eq(0)").children("td").length >= data.data.list.length) {
-                                            $("#dynamicCompound tbody tr:eq(0)").empty();
-
-                                        }
-                                    }
-                                    $("#dynamicCompound tbody tr:eq(0)").append('<td align="center">' + "<img src='" + data.data.list[k].itemPath + "'>" + '</td>');
-
-                                }
-                                //获取物品id的点击事件
-                                $("#wholeItems tr td").click(function () {    //td点击事件；
-                                    var val = $(this).children("p").html();  //定义val值为点击的此td的id值；
-                                    //console.log(val);
-                                    $.ajax({
-                                        type: 'GET',
-                                        url: "http://127.0.0.1:8004/rest/item/getItemById",
-                                        data: {
-                                            itemId: val
-                                        },
-                                        success: function (data) {
-                                            var datas = data.data;
-                                            for (var k = 0; k < data.data.list.length; k++) {
-                                                //物品重复点击自身清空再append
-                                                if ($('#dynamicCompound').children("tbody").children("tr:eq(1)").children("td").length == 1) {
-                                                    $("#dynamicCompound tbody tr:eq(1)").empty();
-                                                }
-                                                $("#dynamicCompound tbody tr:eq(1)").append('<td align="center">' + "<img src='" + data.data.list[k].itemPath + "'>" + '</td>');
-
-                                            }
-                                            //获取物品id的点击事件
-                                            $("#wholeItems tr td").click(function () {    //td点击事件；
-                                                var val = $(this).children("p").html();  //定义val值为点击的此td的id值；
-                                                //console.log(val);
-                                                $.ajax({
-                                                    type: 'GET',
-                                                    url: "http://127.0.0.1:8004/rest/item/queryItemCompound",
-                                                    data: {
-                                                        itemId: val
-                                                    },
-                                                    success: function (data) {
-                                                        var datas = data.data;
-                                                        for (var k = 0; k < data.data.list.length; k++) {
-                                                            //含有单个子物品的物品重复点击自身
-                                                            if ($('#dynamicCompound').children("tbody").children("tr:eq(2)").children("td").length == 1) {
-                                                                if ($('#dynamicCompound').children("tbody").children("tr:eq(2)").children("td").length >= data.data.list.length) {
-                                                                    $("#dynamicCompound tbody tr:eq(2)").empty();
-                                                                }
-
-                                                            }
-                                                            //点击含有单个子物品的物品再点击含有多个父物品的物品
-                                                            if ($('#dynamicCompound').children("tbody").children("tr:eq(2)").children("td").length == data.data.list.length) {
-                                                                $("#dynamicCompound tbody tr:eq(2) td:eq(2)").remove();
-                                                            }
-                                                            //含有多个子物品的物品重复点击自身
-                                                            if ($('#dynamicCompound').children("tbody").children("tr:eq(2)").children("td").length >= 2) {
-                                                                if ($('#dynamicCompound').children("tbody").children("tr:eq(2)").children("td").length >= data.data.list.length) {
-                                                                    $("#dynamicCompound tbody tr:eq(2)").empty();
-
-                                                                }
-                                                            }
-                                                            $("#dynamicCompound tbody tr:eq(2)").append('<td align="center">' + "<img src='" + data.data.list[k].itemPath + "'>" + '</td>');
-                                                        }
-
-
-                                                    },
-                                                    error: function (jqXHR, textStatus, errorThrown) {
-                                                        alert(XMLHttpRequest.status);
-                                                        alert(XMLHttpRequest.readyState);
-                                                        alert(textStatus);
-                                                    },
-                                                    dataType: "json"
-                                                })
-                                            })
-
-                                        },
-                                        error: function (jqXHR, textStatus, errorThrown) {
-                                            alert(XMLHttpRequest.status);
-                                            alert(XMLHttpRequest.readyState);
-                                            alert(textStatus);
-                                        },
-                                        dataType: "json"
-                                    })
-                                })
-
-                            },
-                            error: function (jqXHR, textStatus, errorThrown) {
-                                alert(XMLHttpRequest.status);
-                                alert(XMLHttpRequest.readyState);
-                                alert(textStatus);
-                            },
-                            dataType: "json"
-                        })
-                    })
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    alert(XMLHttpRequest.status);
-                    alert(XMLHttpRequest.readyState);
-                    alert(textStatus);
-                },
-                dataType: "json"
-            });
-        });
-
-        $("#searchButton").click(function () {    //按钮点击事件；
-            $.ajax({
-                type: 'GET',
-                url: "http://127.0.0.1:8004/rest/item/queryItem",
-                data: {
-                    chineseName: $(" input[ name='chinesename_input' ] ").val()
-                },
-                success: function (data) {
-                    var datas = data.data;
-                    $('#wholeItems tr:not([class])').each(function (i) {                   // 遍历 tr
-                        $(this).children('td').each(function (j) {  // 遍历 tr 的各个 td
-                            //console.log("第" + (i + 1) + "行，第" + (j + 1) + "个td的值：" + $(this).text() + "。");
-                            for (var k = 0; k < data.data.list.length; k++) {
-                                $(this).empty();
-                                if(i==data.data.list.length&&j==data.data.list.length){
-                                    var id = "<p style='display:none'>" + data.data.list[k].id + "</p>";
-                                    $(this).html(id + "<img src='" + data.data.list[k].itemPath + "'>")
-                                }
-
-                            }
-
-                        });
-                    });
-                }
-            })
-        })
-    </script>
+    })
+</script>
 </body>
 
 </html>

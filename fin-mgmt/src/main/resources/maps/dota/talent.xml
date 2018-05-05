@@ -21,7 +21,7 @@
     </update>
 
     <select id="queryTalent" parameterType="com.xgt.bean.dota.TalentBean" resultType="com.xgt.dao.entity.dota.Talent">
-        SELECT id,text,hero_id heroId,grade,`type`,is_delete isDelete
+        SELECT id,text,hero_id heroId,grade,`type`,chinese_name chineseName,is_delete isDelete
         FROM talent
         <include refid="sqlWhere"/>
         <include refid="common.Pagination_Limit"/>

@@ -4,8 +4,10 @@ import org.apache.commons.lang.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.net.*;
+import java.util.Enumeration;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *  根据IP地址获取详细的地域信息
@@ -45,6 +47,50 @@ public class IpUtil {
             return request.getRemoteAddr();
         }
     }
+
+    public static String getOutsideIp(HttpServletRequest request){
+        String ip = "";
+        String chinaz = "http://ip.chinaz.com";
+
+        StringBuilder inputLine = new StringBuilder();
+        String read = "";
+        URL url = null;
+        HttpURLConnection urlConnection = null;
+        BufferedReader in = null;
+        try {
+            url = new URL(chinaz);
+            urlConnection = (HttpURLConnection) url.openConnection();
+            in = new BufferedReader( new InputStreamReader(urlConnection.getInputStream(),"UTF-8"));
+            while((read=in.readLine())!=null){
+                inputLine.append(read+"\r\n");
+            }
+            //System.out.println(inputLine.toString());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally{
+            if(in!=null){
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
+        Pattern p = Pattern.compile("\\<dd class\\=\"fz24\">(.*?)\\<\\/dd>");
+        Matcher m = p.matcher(inputLine.toString());
+        if(m.find()){
+            String ipstr = m.group(1);
+            ip = ipstr;
+            //System.out.println(ipstr);
+        }
+        return ip;
+    }
+
     /**
      *
      * @param content
@@ -67,7 +113,7 @@ public class IpUtil {
             if(temp.length<3){
                 return "0";//无效IP，局域网测试
             }
-            String region = (temp[7].split(":"))[1].replaceAll("\"", "");
+            String region = (temp[5].split(":"))[1].replaceAll("\"", "");
             region = decodeUnicode(region);// 省份
             /**
              * String country = ""; String area = ""; String region = ""; String

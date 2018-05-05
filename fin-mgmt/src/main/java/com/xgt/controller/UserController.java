@@ -5,7 +5,6 @@ import com.xgt.common.BaseController;
 import com.xgt.common.PcsResult;
 import com.xgt.dao.entity.Resource;
 import com.xgt.dao.entity.User;
-import com.xgt.enums.*;
 import com.xgt.exception.EnumPcsServiceError;
 import com.xgt.service.ResourceService;
 import com.xgt.service.UserService;
@@ -35,6 +34,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -188,7 +188,25 @@ public class UserController extends BaseController {
     @Produces(MediaType.APPLICATION_JSON)
     public PcsResult getWeather(@Context HttpServletRequest request) throws Exception {
         WeatherUtil weatherUtil =new WeatherUtil();
-        return  newResult().setData(weatherUtil.getCityWeatherByIp(IpUtil.getIpAddr(request)));
+
+        Map<String,Object> modelMap = new HashMap<String,Object>();
+        IpUtil ipUtil = new IpUtil();
+        String ip = IpUtil.getOutsideIp(request);
+
+        String cityName=ipUtil.getAddresses("ip="+ip, "utf-8");
+        if(cityName!=null&&cityName.length()>0){
+            cityName=cityName.replace("市","");
+        }else{
+            cityName="合肥";
+        }
+        String jsonArray = URLUtil.getUrlForWeather("https://api.seniverse.com/v3/weather/now.json?key=zer7j0bd8udndcnu&location="+ "hefei" +"&language=zh-Hans&unit=c");
+        List<WeatherInfo> weatherInfos = GsonUtil.getObjectList(jsonArray,WeatherInfo.class);
+        Map<String,Object> weatherMap = new HashedMap<>();
+        weatherMap.put("city",cityName);
+        weatherMap.put("text",weatherInfos.get(0).getText());
+        weatherMap.put("code",weatherInfos.get(0).getCode());
+        weatherMap.put("temperature",weatherInfos.get(0).getTemperature());
+        return newResult().setData(weatherMap);
     }
 
     private void uploadUserFile(UserBean userBean) throws FileNotFoundException {

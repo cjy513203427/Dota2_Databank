@@ -131,7 +131,8 @@ Ext.define('Admin.view.item.Item', {
             text: '操作',
             xtype: 'actioncolumn',
             width: 100,
-            items: []
+            items: [],
+            hidden:true
         }],
         selModel: {
             selType: 'checkboxmodel'

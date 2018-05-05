@@ -1,6 +1,7 @@
 package com.xgt.dao.dota;
 
 import com.xgt.bean.dota.PlayersBean;
+import com.xgt.bean.dota.SteamAccountBean;
 import com.xgt.dao.entity.dota.Players;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,16 @@ public class matchDetailPlayersDao {
         sqlSession.insert("dota.matchDetailPlayers.importMatchDetailPlayersFromSteamAPI",playersBean);
     }
 
+    public void importSteamAccountsFromSteamAPI(SteamAccountBean steamAccountBean){
+        sqlSession.insert("dota.matchDetailPlayers.importSteamAccountsFromSteamAPI",steamAccountBean);
+    }
+
     public Integer ifMatchIdExists(Long match_id){
         return sqlSession.selectOne("dota.matchDetailPlayers.ifMatchIdExists",match_id);
+    }
+
+    public Integer ifSteamAccountExists(Long steamid){
+        return sqlSession.selectOne("dota.matchDetailPlayers.ifSteamAccountExists",steamid);
     }
 
     public List<Players> queryMatchDetailPlayers(Long match_id){

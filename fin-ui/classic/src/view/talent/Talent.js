@@ -68,6 +68,10 @@ Ext.define('Admin.view.talent.Talent', {
             dataIndex: 'text',
             width: 245
         },{
+            text: '中文名',
+            dataIndex: 'chineseName',
+            width: 245
+        },{
             text: '英雄id',
             dataIndex: 'heroId',
             width: 150
@@ -83,6 +87,7 @@ Ext.define('Admin.view.talent.Talent', {
             text: '操作',
             xtype: 'actioncolumn',
             width: 100,
+            hidden:true,
             items: []
         }],
         selModel: {

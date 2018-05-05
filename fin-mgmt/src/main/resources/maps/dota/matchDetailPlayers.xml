@@ -12,8 +12,19 @@
         scaled_hero_healing=#{scaled_hero_healing},match_id=#{match_id}
     </insert>
 
+    <insert id="importSteamAccountsFromSteamAPI" parameterType="com.xgt.bean.dota.SteamAccountBean">
+        INSERT steam_account SET steamid = #{steamid},communityvisibilitystate=#{communityvisibilitystate},
+        personaname=#{personaname},lastlogoff=#{string_lastlogoff},profileurl=#{profileurl},avatar=#{avatar},avatarmedium=#{avatarmedium},
+        avatarfull=#{avatarfull},personastate=#{personastate},primaryclanid=#{primaryclanid},timecreated=#{string_timecreated},
+        personastateflags=#{personastateflags}
+    </insert>
+
     <select id="ifMatchIdExists" parameterType="java.lang.Long" resultType="java.lang.Integer">
         SELECT count(1) FROM match_detail_players WHERE match_id=#{match_id}
+    </select>
+
+    <select id="ifSteamAccountExists" parameterType="java.lang.Long" resultType="java.lang.Integer">
+        SELECT count(1) FROM steam_account WHERE steamid=#{steamid}
     </select>
 
     <select id="queryMatchDetailPlayers" parameterType="java.lang.Long" resultType="com.xgt.dao.entity.dota.Players">
@@ -22,7 +33,7 @@
         ,result.hero_damage,result.tower_damage,result.hero_healing,result.gold,result.gold_spent,
         result.scaled_hero_damage,result.scaled_tower_damage,result.scaled_hero_healing,
         heroId.hero_path heroPath,item0.item_path itemPath0,item1.item_path itemPath1,item2.item_path itemPath2,
-        item3.item_path itemPath3,item4.item_path itemPath4,item5.item_path itemPath5 from
+        item3.item_path itemPath3,item4.item_path itemPath4,item5.item_path itemPath5,steamId.personaname from
         (SELECT match_detail_players.id,item_path from match_detail_players,item where match_detail_players.item_0=item.id)item0,
         (SELECT match_detail_players.id,item_path from match_detail_players,item where match_detail_players.item_1=item.id)item1,
         (SELECT match_detail_players.id,item_path from match_detail_players,item where match_detail_players.item_2=item.id)item2,
@@ -30,9 +41,11 @@
         (SELECT match_detail_players.id,item_path from match_detail_players,item where match_detail_players.item_4=item.id)item4,
         (SELECT match_detail_players.id,item_path from match_detail_players,item where match_detail_players.item_5=item.id)item5,
         (SELECT match_detail_players.id,hero_path from match_detail_players,hero where match_detail_players.hero_id=hero.id)heroId,
+        (SELECT match_detail_players.id,personaname from match_detail_players,steam_account where match_detail_players.account_id=(steam_account.steamid - 76561197960265728))steamId,
         ( SELECT id,account_id,player_slot,kills,deaths,assists,leaver_status,last_hits,denies,gold_per_min,xp_per_min,level,hero_damage,tower_damage,
           hero_healing,gold,gold_spent,scaled_hero_damage,scaled_tower_damage,scaled_hero_healing,match_id from match_detail_players)result
         where item0.id=item1.id AND item0.id=item2.id AND item0.id=item3.id AND item0.id=item4.id
-        AND item0.id=item5.id AND item0.id=heroId.id AND item0.id=result.id AND result.match_id = #{match_id}
+        AND item0.id=item5.id AND item0.id=heroId.id AND item0.id=result.id AND item0.id=steamId.id
+        AND result.match_id = #{match_id}
     </select>
 </mapper>

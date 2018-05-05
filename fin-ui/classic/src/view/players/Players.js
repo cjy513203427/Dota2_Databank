@@ -7,6 +7,8 @@ Ext.define('Admin.view.players.Players', {
     title: '比赛详细信息',
     width: '50%',
     height: '450px',
+    resizable:false,
+    draggable:false,
     requires: [
         'Admin.view.players.PlayersController',
         'Ext.button.Button',
@@ -48,18 +50,23 @@ Ext.define('Admin.view.players.Players', {
            proxy:{
                type:'ajax',
                url:Common.Config.requestPath('Match', 'getMatchDetailPlayers'),
-            reader: {
-                type: 'json',
-                rootProperty: 'data.list',
-                totalProperty: 'data.total'
-            }
-           } ,
-        autoLoad:true
+               //timeout:90000,
+                reader: {
+                    type: 'json',
+                    rootProperty: 'data.list',
+                    totalProperty: 'data.total'
+                }
+           },
+        //autoLoad:true
         }),
         columns: [{
             text: "玩家账号id",
-            dataIndex: 'account_id'
+            dataIndex: 'account_id',
+            hidden:true
         }, {
+            text: "玩家名称",
+            dataIndex: 'personaname'
+        },{
             text: "玩家位置",
             dataIndex: 'player_slot'
         }, {
@@ -137,42 +144,42 @@ Ext.define('Admin.view.players.Players', {
             text: "物品1",
             dataIndex: 'itemPath0',
             renderer:function (value) {
-                return '<img style="width: 75%;height: 75%;" title="" alt="" src="'+ value + '">'
+                return '<img style="width: 100%;height: 100%;" title="" alt="" src="'+ value + '">'
 
             }
         }, {
             text: "物品2",
             dataIndex: 'itemPath1',
             renderer:function (value) {
-                return '<img style="width: 75%;height: 75%;" title="" alt="" src="'+ value + '">'
+                return '<img style="width: 100%;height: 100%;" title="" alt="" src="'+ value + '">'
 
             }
         }, {
             text: "物品3",
             dataIndex: 'itemPath2',
             renderer:function (value) {
-                return '<img style="width: 75%;height: 75%;" title="" alt="" src="'+ value + '">'
+                return '<img style="width: 100%;height: 100%;" title="" alt="" src="'+ value + '">'
 
             }
         }, {
             text: "物品4",
             dataIndex: 'itemPath3',
             renderer:function (value) {
-                return '<img style="width: 75%;height: 75%;" title="" alt="" src="'+ value + '">'
+                return '<img style="width: 100%;height: 100%;" title="" alt="" src="'+ value + '">'
 
             }
         }, {
             text: "物品5",
             dataIndex: 'itemPath4',
             renderer:function (value) {
-                return '<img style="width: 75%;height: 75%;" title="" alt="" src="'+ value + '">'
+                return '<img style="width: 100%;height: 100%;" title="" alt="" src="'+ value + '">'
 
             }
         }, {
             text: "物品6",
             dataIndex: 'itemPath5',
             renderer:function (value) {
-                return '<img style="width: 75%;height: 75%;" title="" alt="" src="'+ value + '">'
+                return '<img style="width: 100%;height: 100%;" title="" alt="" src="'+ value + '">'
 
             }
         }, {
@@ -196,9 +203,35 @@ Ext.define('Admin.view.players.Players', {
         }, {
             text: "助攻",
             dataIndex: 'assists'
-        }, {
+        },/**
+         *
+         0 - NONE - finished match, no abandon.
+         1 - DISCONNECTED - player DC, no abandon.
+         2 - DISCONNECTED_TOO_LONG - player DC > 5min, abandoned.
+         3 - ABANDONED - player DC, clicked leave, abandoned.
+         4 - AFK - player AFK, abandoned.
+         5 - NEVER_CONNECTED - player never connected, no abandon.
+         6 - NEVER_CONNECTED_TOO_LONG - player took too long to connect, no abandon.
+         */ {
             text: "逃跑者状态",
-            dataIndex: 'leaver_status'
+            dataIndex: 'leaver_status',
+            renderer:function (value) {
+                if(value == 0){
+                    return "无"
+                }else if(value == 1){
+                    return "断开连接"
+                }else if(value == 2){
+                    return "断开连接时间过长"
+                }else if(value == 3){
+                    return "已放弃"
+                }else if(value == 4){
+                    return "永久离开"
+                }else if(value == 4){
+                    return "从未连接"
+                }else if(value == 4){
+                    return "从未连接时间过长"
+                }
+            }
         }, {
             text: "最后一击",
             dataIndex: 'last_hits'
@@ -212,13 +245,13 @@ Ext.define('Admin.view.players.Players', {
             text: "每分钟经验",
             dataIndex: 'xp_per_min'
         }, {
-            text: "水平",
+            text: "等级",
             dataIndex: 'level'
         }, {
             text: "英雄伤害",
             dataIndex: 'hero_damage'
         }, {
-            text: "高塔伤害",
+            text: "对塔伤害",
             dataIndex: 'tower_damage'
         }, {
             text: "英雄治疗",
@@ -231,19 +264,19 @@ Ext.define('Admin.view.players.Players', {
             dataIndex: 'gold_spent'
         }, {
             text: "scaled英雄伤害",
-            dataIndex: 'scaled_hero_damage'
+            dataIndex: 'scaled_hero_damage',
+            hidden:true
         }, {
             text: "scaled高塔伤害",
-            dataIndex: 'scaled_tower_damage'
+            dataIndex: 'scaled_tower_damage',
+            hidden:true
         }, {
             text: "scaled英雄治疗",
-            dataIndex: 'scaled_hero_healing'
+            dataIndex: 'scaled_hero_healing',
+            hidden:true
         }],
-        selModel: {
-            selType: 'checkboxmodel'
-        },
         listeners: {
-            beforerender: 'gridBeforeRender',
+            beforerender: 'loadStore',
         }
     }]
 });

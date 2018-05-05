@@ -48,8 +48,8 @@ public class ItemController extends BaseController{
     @GET
     @Path("queryChineseNameItem")
     @Produces(MediaType.APPLICATION_JSON)
-    //@RequiresPermissions(value="item:queryChineseNameItemForUpgrated")
-    public PcsResult queryChineseNameItemForUpgrated(@QueryParam("upgratedItem") Integer upgratedItem){
+    //@RequiresPermissions(value="item:queryChineseNameItem")
+    public PcsResult queryChineseNameItem(@QueryParam("upgratedItem") Integer upgratedItem){
         Map map = itemService.queryChineseNameItem(upgratedItem);
         if(map.size()==0){
             return newResult(false).setCode(EnumPcsServiceError.ERROR_OPERATE.getCode()).setMessage(EnumPcsServiceError.ERROR_OPERATE.getDesc());

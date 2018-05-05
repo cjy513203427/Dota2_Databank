@@ -108,7 +108,8 @@ Ext.define('Admin.view.matchHistory.MatchHistoryController', {
                         create: rec.data
                     }
                 }
-            }
+            },
+            match_id: rec.get('match_id'),
         }).show();
     }
 

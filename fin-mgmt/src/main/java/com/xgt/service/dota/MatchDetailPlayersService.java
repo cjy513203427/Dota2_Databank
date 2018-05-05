@@ -1,6 +1,7 @@
 package com.xgt.service.dota;
 
 import com.xgt.bean.dota.PlayersBean;
+import com.xgt.bean.dota.SteamAccountBean;
 import com.xgt.dao.dota.matchDetailPlayersDao;
 import com.xgt.dao.entity.dota.Item;
 import com.xgt.dao.entity.dota.Players;
@@ -23,8 +24,16 @@ public class MatchDetailPlayersService {
         matchDetailPlayersDao.importMatchDetailPlayersFromSteamAPI(playersBean);
     }
 
+    public void importSteamAccountsFromSteamAPI(SteamAccountBean steamAccountBean){
+        matchDetailPlayersDao.importSteamAccountsFromSteamAPI(steamAccountBean);
+    }
+
     public Integer ifMatchIdExists(Long match_id){
         return matchDetailPlayersDao.ifMatchIdExists(match_id);
+    }
+
+    public Integer ifSteamAccountExists(Long steamid){
+        return matchDetailPlayersDao.ifSteamAccountExists(steamid);
     }
 
     public List<Players> queryMatchDetailPlayers(Long match_id){

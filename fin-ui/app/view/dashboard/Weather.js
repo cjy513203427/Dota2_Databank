@@ -17,10 +17,10 @@ Ext.define('Admin.view.dashboard.Weather', {
         status2:'未知'
     },
 
-    tpl: '<div class="weather-image-container"><img width="50px" src="resources/images/icons/weather_{figure1}.png" alt="{status1}"/></div>'+
+    tpl: '<div class="weather-image-container"><img width="50px" src="resources/images/3d_180/{code}.png" alt="{status1}"/></div>'+
     '<div class="weather-details-container">' +
-    '<div>{temperature2}&#176;~{temperature1}&#176;</div>' +
-    '<div>{city}，白天 {status1}，夜间 {status2}，空气质量 {pollution_l}</div>' +
+    '<div>{temperature}&#176;</div>' +
+    '<div>城市：{city}，天气：{text}</div>' +
     '</div>',
     listeners:{
         render:function(){
@@ -29,6 +29,7 @@ Ext.define('Admin.view.dashboard.Weather', {
                 url: Common.Config.requestPath('System','Users', 'getWeather'),
                 method: 'get'
             }, function (data) {
+                console.log(data.data)
                 me.setData(data.data);
             });
         }

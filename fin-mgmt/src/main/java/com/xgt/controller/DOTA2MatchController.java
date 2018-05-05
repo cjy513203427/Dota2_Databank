@@ -1,13 +1,16 @@
 package com.xgt.controller;
 
 import com.xgt.bean.dota.PlayersBean;
+import com.xgt.bean.dota.SteamAccountBean;
 import com.xgt.common.BaseController;
 import com.xgt.dao.entity.dota.MatchDetail;
 import com.xgt.dao.entity.dota.MatchHistory;
 import com.xgt.dao.entity.dota.Players;
+import com.xgt.dao.entity.dota.SteamAccount;
 import com.xgt.service.dota.MatchDetailPlayersService;
 import com.xgt.util.DateUtil;
 import com.xgt.util.GsonUtil;
+import com.xgt.util.SteamUtil;
 import com.xgt.util.URLUtil;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -99,6 +102,47 @@ public class DOTA2MatchController extends BaseController{
         if(matchDetailPlayersService.ifMatchIdExists(match_id)==0) {
         for(Players player:players){
             playersBean.setAccount_id(player.getAccount_id());
+            Long STEAM64ID = SteamUtil.generateSTEAMID64((player.getAccount_id()) );
+            String jsonSteamAccountArray = URLUtil.getUrlForSteamAccount("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v1/?key=" + steamKey + "&steamids=" + STEAM64ID);
+
+            List<SteamAccount> steamAccounts = GsonUtil.getObjectList(jsonSteamAccountArray,SteamAccount.class);
+            if(matchDetailPlayersService.ifSteamAccountExists(SteamUtil.generateSTEAMID64(player.getAccount_id()))==0) {
+                for (SteamAccount steamAccount : steamAccounts) {
+                    SteamAccountBean steamAccountBean = new SteamAccountBean();
+                    if (steamAccount != null) {
+                        steamAccountBean.setSteamid(steamAccount.getSteamid());
+                        steamAccountBean.setCommunityvisibilitystate(steamAccount.getCommunityvisibilitystate());
+                        steamAccountBean.setPersonaname(steamAccount.getPersonaname());
+                        String lastlogoff = String.valueOf(steamAccount.getLastlogoff());
+                        steamAccountBean.setString_lastlogoff(DateUtil.TimeStamp2Date(lastlogoff));
+                        steamAccountBean.setProfileurl(steamAccount.getProfileurl());
+                        steamAccountBean.setAvatar(steamAccount.getAvatar());
+                        steamAccountBean.setAvatarmedium(steamAccount.getAvatarmedium());
+                        steamAccountBean.setAvatarfull(steamAccount.getAvatarfull());
+                        steamAccountBean.setPersonastate(steamAccount.getPersonastate());
+                        steamAccountBean.setPrimaryclanid(steamAccount.getPrimaryclanid());
+                        String timecreated = String.valueOf(steamAccount.getTimecreated());
+                        steamAccountBean.setString_timecreated(DateUtil.TimeStamp2Date(timecreated));
+                        steamAccountBean.setPersonastateflags(steamAccount.getPersonastateflags());
+                        matchDetailPlayersService.importSteamAccountsFromSteamAPI(steamAccountBean);
+                    }else{
+                        steamAccountBean.setSteamid(76561202255233023L);
+                        steamAccountBean.setCommunityvisibilitystate(null);
+                        steamAccountBean.setPersonaname("匿名");
+                        steamAccountBean.setLastlogoff(null);
+                        steamAccountBean.setProfileurl(null);
+                        steamAccountBean.setAvatar(null);
+                        steamAccountBean.setAvatarmedium(null);
+                        steamAccountBean.setAvatarfull(null);
+                        steamAccountBean.setPersonastate(null);
+                        steamAccountBean.setPrimaryclanid(null);
+                        steamAccountBean.setString_timecreated(null);
+                        steamAccountBean.setPersonastateflags(null);
+                        matchDetailPlayersService.importSteamAccountsFromSteamAPI(steamAccountBean);
+                    }
+                }
+            }
+
             playersBean.setPlayer_slot(player.getPlayer_slot());
             playersBean.setHero_id(player.getHero_id());
             if(player.getItem_0()==0){

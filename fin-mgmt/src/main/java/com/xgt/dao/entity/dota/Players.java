@@ -94,6 +94,8 @@ public class Players {
 
     private Integer scaled_hero_healing;
 
+    private String personaname;
+
     public Long getAccount_id() {
         return account_id;
     }
@@ -380,5 +382,13 @@ public class Players {
 
     public void setHeroPath(String heroPath) {
         this.heroPath = heroPath;
+    }
+
+    public String getPersonaname() {
+        return personaname;
+    }
+
+    public void setPersonaname(String personaname) {
+        this.personaname = personaname;
     }
 }

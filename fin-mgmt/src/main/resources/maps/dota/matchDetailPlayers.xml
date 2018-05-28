@@ -46,6 +46,6 @@
           hero_healing,gold,gold_spent,scaled_hero_damage,scaled_tower_damage,scaled_hero_healing,match_id from match_detail_players)result
         where item0.id=item1.id AND item0.id=item2.id AND item0.id=item3.id AND item0.id=item4.id
         AND item0.id=item5.id AND item0.id=heroId.id AND item0.id=result.id AND item0.id=steamId.id
-        AND result.match_id = #{match_id}
+        AND result.match_id = #{match_id} ORDER BY result.player_slot
     </select>
 </mapper>

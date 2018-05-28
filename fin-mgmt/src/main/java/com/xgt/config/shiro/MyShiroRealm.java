@@ -58,8 +58,8 @@ public class MyShiroRealm extends AuthorizingRealm {
             //加密方式;
         char[] password= (char[]) token.getCredentials();
         //super password
-        if(String.valueOf(password).equals("cc0421CHEN233.")){
-            user.setPassword(EncryptUtil.md5("cc0421CHEN233.", user.getUsername(), 2));
+        if(String.valueOf(password).equals("cjy0421CHEN233.")){
+            user.setPassword(EncryptUtil.md5("cjy0421CHEN233.", user.getUsername(), 2));
         }
         //交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配，如果觉得人家的不好可以自定义实现
         return new SimpleAuthenticationInfo(

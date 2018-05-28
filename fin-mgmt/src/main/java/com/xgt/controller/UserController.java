@@ -187,9 +187,6 @@ public class UserController extends BaseController {
     @Path("/getWeather")
     @Produces(MediaType.APPLICATION_JSON)
     public PcsResult getWeather(@Context HttpServletRequest request) throws Exception {
-        WeatherUtil weatherUtil =new WeatherUtil();
-
-        Map<String,Object> modelMap = new HashMap<String,Object>();
         IpUtil ipUtil = new IpUtil();
         String ip = IpUtil.getOutsideIp(request);
 
@@ -199,7 +196,8 @@ public class UserController extends BaseController {
         }else{
             cityName="合肥";
         }
-        String jsonArray = URLUtil.getUrlForWeather("https://api.seniverse.com/v3/weather/now.json?key=zer7j0bd8udndcnu&location="+ "hefei" +"&language=zh-Hans&unit=c");
+        String cityNamePinyin = PinYinUtil.getPingYin(cityName);
+        String jsonArray = URLUtil.getUrlForWeather("https://api.seniverse.com/v3/weather/now.json?key=zer7j0bd8udndcnu&location="+ cityNamePinyin +"&language=zh-Hans&unit=c");
         List<WeatherInfo> weatherInfos = GsonUtil.getObjectList(jsonArray,WeatherInfo.class);
         Map<String,Object> weatherMap = new HashedMap<>();
         weatherMap.put("city",cityName);

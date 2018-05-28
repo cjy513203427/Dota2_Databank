@@ -2,6 +2,7 @@ package com.xgt.exception;
 
 /**
  * all service error code config
+ * 枚举
  */
 public enum EnumPcsService {
     /**

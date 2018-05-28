@@ -48,6 +48,12 @@ public class IpUtil {
         }
     }
 
+    /**
+     * 获取外网ip
+     * 即所在地地址ip
+     * @param request
+     * @return
+     */
     public static String getOutsideIp(HttpServletRequest request){
         String ip = "";
         String chinaz = "http://ip.chinaz.com";

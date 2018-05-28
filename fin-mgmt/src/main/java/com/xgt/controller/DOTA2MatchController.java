@@ -121,8 +121,12 @@ public class DOTA2MatchController extends BaseController{
                         steamAccountBean.setAvatarfull(steamAccount.getAvatarfull());
                         steamAccountBean.setPersonastate(steamAccount.getPersonastate());
                         steamAccountBean.setPrimaryclanid(steamAccount.getPrimaryclanid());
-                        String timecreated = String.valueOf(steamAccount.getTimecreated());
-                        steamAccountBean.setString_timecreated(DateUtil.TimeStamp2Date(timecreated));
+                        if(steamAccount.getTimecreated() != null) {
+                            String timecreated = String.valueOf(steamAccount.getTimecreated());
+                            steamAccountBean.setString_timecreated(DateUtil.TimeStamp2Date(timecreated));
+                        }else{
+                            steamAccountBean.setString_timecreated(null);
+                        }
                         steamAccountBean.setPersonastateflags(steamAccount.getPersonastateflags());
                         matchDetailPlayersService.importSteamAccountsFromSteamAPI(steamAccountBean);
                     }else{

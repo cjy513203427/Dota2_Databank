@@ -270,7 +270,7 @@ Ext.define('Admin.view.matchHistory.MatchHistory', {
                 }else if (status == 21) {
                     return "1v1中路对单";
                 }else if (status == 22) {
-                    return "天梯匹配";
+                    return "全英雄选择";
                 }else if (status == 23) {
                     return "加速模式";
                 }

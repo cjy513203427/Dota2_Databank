@@ -31,7 +31,7 @@ Ext.define('Admin.view.itemSimulation.ItemSimulation', {
             width:'100%',
             height:'100%',
             //bodyStyle : 'overflow-x:hidden; overflow-y:scroll',
-            html:'<iframe frameborder=0 width=100% height=100% frameborder=0 src="http://127.0.0.1:8889/Items.html">' +
+            html:'<iframe frameborder=0 width=100% height=100% frameborder=0 src="http://106.14.213.208:8889/Items.html">' +
             '</iframe>'
         }]
 

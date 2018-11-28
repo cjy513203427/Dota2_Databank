@@ -7,5 +7,5 @@
 *.iml
 out
 gen
-/fin-mgmt/src/main/resources/application-prod.properties
-/fin-mgmt/src/main/resources/application-dev.properties
+#/fin-mgmt/src/main/resources/application-prod.properties
+#/fin-mgmt/src/main/resources/application-dev.properties

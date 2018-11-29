@@ -65,7 +65,7 @@ Dota2资料库管理平台的E-R图如图4-5所示。
 | STATUS |TINYINT | NO | |状态，0禁用1正常|
 | UPDATE_TIME |TIMESTAMP | NO | CURRENT_TIMESTAMP|修改时间|
 | CREATE_TIME |DATETIME | NO | '0000-00-00 00:00:00'|创建时间|
-####角色表
+#### 角色表
 | 字段名 | 数据类型 | 允许非空 |默认值|备注|
 | ------------- |:-------------:| -----:|  -----:| -----:| 
 | ID |INT | NO | |角色id|

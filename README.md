@@ -43,8 +43,13 @@ IDEA是Java语言开发的集成环境，IntelliJ在业界被公认为最好的J
 
 ## 3.概要设计
 ### 3.1 系统总体结构设计
-### 3.1.1 总体结构设计功能
+#### 3.1.1 总体结构设计功能
 Dota2资料库管理平台设计包含了玩家模块和运营人模块，可以对游戏信息进行检索处理，极大提高了游戏的版本迭代效率和游戏可玩性，
 Dota2资料库管理平台总体结构设计功能图如图4-4所示。<br>
 ![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE4-4%20Dota2%E8%B5%84%E6%96%99%E5%BA%93%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E6%80%BB%E4%BD%93%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%8A%9F%E8%83%BD%E5%9B%BE.jpg)
-
+#### 3.1.2 系统E-R图
+E-R图也称实体-联系图，提供了表示属性、实体类型和联系的方法，用来描述真实世界的概念模型。
+Dota2资料库管理平台的E-R图如图4-5所示。
+### 3.2数据库表设计
+用户表CT_USER如表4-1所示，CT_USER表是存储了用户信息的数据字典，用户进行注册时，用户信息会加入到此表中。
+![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE4-5%20Dota2%E8%B5%84%E6%96%99%E5%BA%93%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E7%9A%84E-R%E5%9B%BE.jpg)

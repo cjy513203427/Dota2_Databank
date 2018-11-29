@@ -51,5 +51,18 @@ Dota2资料库管理平台总体结构设计功能图如图4-4所示。<br>
 E-R图也称实体-联系图，提供了表示属性、实体类型和联系的方法，用来描述真实世界的概念模型。
 Dota2资料库管理平台的E-R图如图4-5所示。
 ### 3.2数据库表设计
-用户表CT_USER如表4-1所示，CT_USER表是存储了用户信息的数据字典，用户进行注册时，用户信息会加入到此表中。
+用户表CT_USER如下表所示，CT_USER表是存储了用户信息的数据字典，用户进行注册时，用户信息会加入到此表中。
 ![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE4-5%20Dota2%E8%B5%84%E6%96%99%E5%BA%93%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E7%9A%84E-R%E5%9B%BE.jpg)
+#### 用户表
+| 字段名 | 数据类型 | 允许非空 |默认值|备注|
+| ------------- |:-------------:| -----:|  -----:| -----:| 
+| ID |INT | NO | 1|用户id|
+| USERNAME |VARCHAR | NO | |用户名|
+| REALNAME |VARCHAR | YES |NULL |真实姓名|
+| PASSWORD |VARCHAR | NO | |用户id|
+| SEX |TINYINT | YES | |用户id|
+| PHONE |VARCHAR | NO | |用户id|
+| STATUS |TINYINT | NO | |用户id|
+| UPDATE_TIME |TIMESTAMP | NO | CURRENT_TIMESTAMP|用户id|
+| CREATE_TIME |DATETIME | NO | '0000-00-00 00:00:00'|用户id|
+

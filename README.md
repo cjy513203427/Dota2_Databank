@@ -56,13 +56,21 @@ Dota2资料库管理平台的E-R图如图4-5所示。
 #### 用户表
 | 字段名 | 数据类型 | 允许非空 |默认值|备注|
 | ------------- |:-------------:| -----:|  -----:| -----:| 
-| ID |INT | NO | 1|用户id|
+| ID |INT | NO | |用户id|
 | USERNAME |VARCHAR | NO | |用户名|
 | REALNAME |VARCHAR | YES |NULL |真实姓名|
-| PASSWORD |VARCHAR | NO | |用户id|
-| SEX |TINYINT | YES | |用户id|
-| PHONE |VARCHAR | NO | |用户id|
-| STATUS |TINYINT | NO | |用户id|
-| UPDATE_TIME |TIMESTAMP | NO | CURRENT_TIMESTAMP|用户id|
-| CREATE_TIME |DATETIME | NO | '0000-00-00 00:00:00'|用户id|
-
+| PASSWORD |VARCHAR | NO | |密码|
+| SEX |TINYINT | YES | |性别|
+| PHONE |VARCHAR | NO | |手机号|
+| STATUS |TINYINT | NO | |状态，0禁用1正常|
+| UPDATE_TIME |TIMESTAMP | NO | CURRENT_TIMESTAMP|修改时间|
+| CREATE_TIME |DATETIME | NO | '0000-00-00 00:00:00'|创建时间|
+####角色表
+| 字段名 | 数据类型 | 允许非空 |默认值|备注|
+| ------------- |:-------------:| -----:|  -----:| -----:| 
+| ID |INT | NO | |角色id|
+| NAME |VARCHAR | NO | |角色名|
+| DESCRIPTION |VARCHAR | YES |NULL |描述|
+| STATUS |TINYINT | NO | |状态|
+| UPDATE_TIME |TIMESTAMP | NO | CURRENT_TIMESTAMP|修改时间|
+| CREATE_TIME |DATETIME | NO | '0000-00-00 00:00:00'|创建时间|

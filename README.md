@@ -10,7 +10,7 @@ Dota2资料库管理平台操作简单，玩家根据自己的需求一些获取
 其中Spring是一个轻量级的Java开发框架。前端使用jQuery、ExtJs等框架，
 靡的一种Web应用程序开源框架，数据访问层使用MyBatis，采用MVC设计模式。
 
-本地部署需要配置sencha环境和Java环境
+本地部署需要配置sencha环境和Java环境，开发环境配置文件是application-dev.properties，生产环境配置文件是application-prod.properties
 sql文件可以在该容器中找到
 [部署到服务器的方法](https://www.cnblogs.com/Java-Starter/p/7607215.html)  
 

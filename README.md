@@ -45,11 +45,11 @@ IDEA是Java语言开发的集成环境，IntelliJ在业界被公认为最好的J
 ### 3.1 系统总体结构设计
 #### 3.1.1 总体结构设计功能
 Dota2资料库管理平台设计包含了玩家模块和运营人模块，可以对游戏信息进行检索处理，极大提高了游戏的版本迭代效率和游戏可玩性，
-Dota2资料库管理平台总体结构设计功能图如图4-4所示。<br>
+Dota2资料库管理平台总体结构设计功能图如图所示。<br>
 ![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE4-4%20Dota2%E8%B5%84%E6%96%99%E5%BA%93%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E6%80%BB%E4%BD%93%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%8A%9F%E8%83%BD%E5%9B%BE.jpg)
 #### 3.1.2 系统E-R图
 E-R图也称实体-联系图，提供了表示属性、实体类型和联系的方法，用来描述真实世界的概念模型。
-Dota2资料库管理平台的E-R图如图4-5所示。
+Dota2资料库管理平台的E-R图如图所示。
 ### 3.2数据库表设计
 用户表CT_USER如下表所示，CT_USER表是存储了用户信息的数据字典，用户进行注册时，用户信息会加入到此表中。
 ![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE4-5%20Dota2%E8%B5%84%E6%96%99%E5%BA%93%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E7%9A%84E-R%E5%9B%BE.jpg)
@@ -67,10 +67,70 @@ Dota2资料库管理平台的E-R图如图4-5所示。
 | CREATE_TIME |DATETIME | NO | '0000-00-00 00:00:00'|创建时间|
 #### 角色表
 | 字段名 | 数据类型 | 允许非空 |默认值|备注|
-| ------------- |:-------------:| -----:|  -----:| -----:| 
+|:-------------:|:-------------:|:-----:|:-----:|:-----:| 
 | ID |INT | NO | |角色id|
 | NAME |VARCHAR | NO | |角色名|
 | DESCRIPTION |VARCHAR | YES |NULL |描述|
 | STATUS |TINYINT | NO | |状态|
 | UPDATE_TIME |TIMESTAMP | NO | CURRENT_TIMESTAMP|修改时间|
 | CREATE_TIME |DATETIME | NO | '0000-00-00 00:00:00'|创建时间|
+#### 权限表
+| 字段名 | 数据类型 | 允许非空 |默认值|备注|
+|:-------------:|:-------------:|:-----:|:-----:|:-----:| 
+| ID |INT | NO | |权限id|
+| NAME |VARCHAR | NO | |权限名称|
+| TYPE |VARCHAR | YES |NULL |权限类型|
+| ICON |VARCHAR | NO | |权限图标|
+| PARENT_ID |INT | NO | |父类id|
+| PERMISSION |VARCHAR | NO | |权限地址|
+| URL |VARCHAR | NO | |图片路径|
+| STATUS |TINYINT | NO | |状态0禁用1启用|
+| UPDATE_TIME |TIMESTAMP | NO | CURRENT_TIMESTAMP|修改时间|
+| CREATE_TIME |DATETIME | NO | '0000-00-00 00:00:00'|创建时间|
+#### 英雄表
+| 字段名 | 数据类型 | 允许非空 |默认值|备注|
+|:-------------:|:-------------:|:-----:|:-----:|:-----:| 
+| ID |INT | NO | |英雄id|
+| NAME |VARCHAR | NO | |英雄名称|
+| LOCALIZED_NAME |VARCHAR | YES |NULL |英雄英文名|
+| HEADPORTRAIT_PATH |VARCHAR | NO | |英雄头像路径|
+| HERO_PATH |VARCHAR | NO | |英雄图片路径|
+#### 物品表
+| 字段名 | 数据类型 | 允许非空 |默认值|备注|
+|:-------------:|:-------------:|:-----:|:-----:|:-----:| 
+| ID |INT | NO | |物品id|
+| NAME |VARCHAR | NO | |物品名称|
+| COST |INT | YES |NULL |物品花费|
+| SECRET_SHOP |TINYINT | NO | |是否神秘商店购买0否1是|
+| SIDE_SHOP |TINYINT | NO | |是否路边商店购买0否1是|
+| RECEIPE |TINYINT | NO | |是否卷轴0否1是|
+| UPGRATED_ITEM |TINYINT | NO | |是否更新物品|
+| ITEM_PATH |VARCHAR | YES |NULL |物品图片路径|
+| LOCALIZED_NAME |VARCHAR | YES | |英文名|
+| CHINESE_NAME |VARCHAR | YES | |中文名|
+#### 天赋表
+| 字段名 | 数据类型 | 允许非空 |默认值|备注|
+|:-------------:|:-------------:|:-----:|:-----:|:-----:| 
+| ID |INT | NO | |天赋id|
+| TEXT |VARCHAR | NO | |天赋名称|
+| HERO_ID |INT | NO |NULL |英雄id|
+| GRADE |TINYINT | NO | |天赋所需等级|
+| TYPE |TINYINT | NO | |天赋类型，左分支类型1，右分支类型2|
+| IS_DELETE |TINYINT | NO | |删除0否1是|
+## 4 系统详细设计
+### 4.1 系统登录模块
+系统登录模块实现了登录注册功能，注册需要用户名和密码，真实姓名、性别等其他信息选填，一个用户名只能注册一次。用户登录需要用户名和密码，连续输入用户名密码错误五次十分钟内不允许登录系统。登录界面如图所示。
+![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE%205-1%20Dota2%E8%B5%84%E6%96%99%E5%BA%93%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E5%B9%B3%E5%8F%B0%E7%99%BB%E9%99%86%E9%A6%96%E9%A1%B5%E5%9B%BE.png)
+Dota2资料库管理平台界面如图所示
+![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE5-2%20Doat2%E8%B5%84%E6%96%99%E5%BA%93%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E5%9B%BE.png)
+![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE5-3%20Dota2%E8%B5%84%E6%96%99%E5%BA%93%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E5%9B%BE.png)
+### 4.2 用户操作模块
+玩家登录平台后，玩家可以查询英雄、物品、天赋信息，还可以对物品合成模拟和对天赋加点模拟。查看英雄信息如图所示
+![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE5-4%E6%9F%A5%E7%9C%8B%E8%8B%B1%E9%9B%84%E4%BF%A1%E6%81%AF.png)
+查看物品信息如图所示
+![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE5-5%E6%9F%A5%E7%9C%8B%E7%89%A9%E5%93%81%E4%BF%A1%E6%81%AF.png)
+查看天赋信息如图所示
+![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE5-6%20%E6%9F%A5%E7%9C%8B%E5%A4%A9%E8%B5%8B%E4%BF%A1%E6%81%AF.png)
+物品模拟如图所示
+
+

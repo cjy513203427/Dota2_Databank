@@ -119,18 +119,26 @@ Dota2资料库管理平台的E-R图如图所示。
 | IS_DELETE |TINYINT | NO | |删除0否1是|
 ## 4 系统详细设计
 ### 4.1 系统登录模块
-系统登录模块实现了登录注册功能，注册需要用户名和密码，真实姓名、性别等其他信息选填，一个用户名只能注册一次。用户登录需要用户名和密码，连续输入用户名密码错误五次十分钟内不允许登录系统。登录界面如图所示。
+系统登录模块实现了登录注册功能，注册需要用户名和密码，真实姓名、性别等其他信息选填，一个用户名只能注册一次。用户登录需要用户名和密码，连续输入用户名密码错误五次十分钟内不允许登录系统。登录界面如图所示。<Br/>
 ![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE%205-1%20Dota2%E8%B5%84%E6%96%99%E5%BA%93%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E5%B9%B3%E5%8F%B0%E7%99%BB%E9%99%86%E9%A6%96%E9%A1%B5%E5%9B%BE.png)
-Dota2资料库管理平台界面如图所示
+<Br/>Dota2资料库管理平台界面如图所示<Br/>
 ![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE5-2%20Doat2%E8%B5%84%E6%96%99%E5%BA%93%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E5%9B%BE.png)
 ![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE5-3%20Dota2%E8%B5%84%E6%96%99%E5%BA%93%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E5%9B%BE.png)
 ### 4.2 用户操作模块
-玩家登录平台后，玩家可以查询英雄、物品、天赋信息，还可以对物品合成模拟和对天赋加点模拟。查看英雄信息如图所示
+玩家登录平台后，玩家可以查询英雄、物品、天赋信息，还可以对物品合成模拟和对天赋加点模拟。查看英雄信息如图所示<Br/>
 ![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE5-4%E6%9F%A5%E7%9C%8B%E8%8B%B1%E9%9B%84%E4%BF%A1%E6%81%AF.png)
-查看物品信息如图所示
+<Br/>查看物品信息如图所示 <Br/>
 ![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE5-5%E6%9F%A5%E7%9C%8B%E7%89%A9%E5%93%81%E4%BF%A1%E6%81%AF.png)
-查看天赋信息如图所示
+<Br/>查看天赋信息如图所示<Br/>
 ![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE5-6%20%E6%9F%A5%E7%9C%8B%E5%A4%A9%E8%B5%8B%E4%BF%A1%E6%81%AF.png)
-物品模拟如图所示
-
-
+<Br/>物品模拟如图所示<Br/>
+![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE5-7%20%E6%9F%A5%E7%9C%8B%E8%A3%85%E5%A4%87%E5%90%88%E6%88%90%E4%BF%A1%E6%81%AF.png)
+<Br/>天赋模拟如图所示，点击左侧的英雄图像，在右侧会显示出天赋模拟的信息。<Br/>
+![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE5-8%E5%A4%A9%E8%B5%8B%E6%A8%A1%E6%8B%9F%E7%95%8C%E9%9D%A2.png)
+<Br/>战绩信息如图所示，输入SteamId，就可以查询该SteamId的比赛信息，双击比赛信息，会弹出一个记载着比赛详细信息的窗口。<Br/>
+![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE5-9%E6%88%98%E7%BB%A9%E4%BF%A1%E6%81%AF%E6%A8%A1%E5%9D%97.png)
+### 4.3 管理员操作模块
+游戏运营人登录平台之后，可以对用户、角色、权限、英雄、天赋、物品进行增加、删除、修改、查询操作。用户的修改如图5-10所示，进入用户管理，点击该行右侧的修改图标，会弹出来用户修改表单，输入信息即可修改。<Br/>
+![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE5-10%E7%94%A8%E6%88%B7%E4%BF%AE%E6%94%B9%E8%A1%A8%E5%8D%95.png)
+<Br/>角色的分配如图5-11所示，进入用户管理，点击该行右侧的编辑图标，弹出来权限分配表单，下拉选择要分配的权限即可分配。<Br/>
+![Image text](https://github.com/cjy513203427/Dota2_Databank/blob/master/resource/%E5%9B%BE5-12%E6%9D%83%E9%99%90%E5%88%86%E9%85%8D.png)

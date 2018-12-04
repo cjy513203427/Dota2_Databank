@@ -55,14 +55,14 @@ public class IndexController extends BaseController{
     private UserService userService;
 
 
-    @Value("${qq.app_id}")
-    protected String appId;
-    @Value("${qq.app_secret}")
-    protected String appSecret;
-    @Value("${qq.redirect_uri}")
-    protected String redirectUri;
-    @Value("${qq.redirect_open_uri}")
-    protected String redirectOpenUri;
+//    @Value("${qq.app_id}")
+//    protected String appId;
+//    @Value("${qq.app_secret}")
+//    protected String appSecret;
+//    @Value("${qq.redirect_uri}")
+//    protected String redirectUri;
+//    @Value("${qq.redirect_open_uri}")
+//    protected String redirectOpenUri;
 
 
 
@@ -164,7 +164,7 @@ public class IndexController extends BaseController{
     }
 
     /**
-     * Post 请求企业QQ 开放平台api
+     * Post 请求QQ 开放平台api
      *
      * @param url
      * @param params
